@@ -1,0 +1,109 @@
+\documentclass[twocolumn,superscriptaddress,aps]{revtex4-1}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{bbold}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+
+\begin{document}
+
+
+% ==============================================================================
+
+\title{\Large{INFO8010: Decogen}}
+\vspace{1cm}
+\author{\small{\bf Marie Goffin}}
+\affiliation{\texttt{mgoffin@student.uliege.be} (\texttt{s191956})}
+\author{\small{\bf Thomas Fredrich}}
+\affiliation{\texttt{thomas.fredrich@student.uliege.be} (\texttt{s191717})}
+
+\maketitle
+
+% ==============================================================================
+
+\section{Introduction}
+
+Interior design visualization and virtual renovation are challenging tasks that traditionally require specialized skills and software. Our project, Decogen, aims to develop a deep learning-based system that allows users to take a photo of a room and transform it according to specific design styles (e.g., minimalist, modern, industrial). Unlike existing solutions that often require manual editing or 3D modeling, our approach will enable style transfer while preserving the structural elements of the original space.
+
+This project combines conditional image generation and style transfer techniques to create a practical application. We aim to build a model that can understand spatial relationships and design aesthetics to generate transformed interior spaces.
+
+\section{Minimum Viable Project}
+
+Our minimum viable project will focus on developing a neural network architecture that transforms input images of rooms according to specified design styles. We will implement a system that can handle 2-3 distinct interior design styles (e.g., minimalist and modern) while preserving basic structural elements like walls and windows. The system will accept room photographs as input and generate stylistically transformed versions as output. We will focus on a specific room type (such as living rooms) to make the problem more tractable within our timeframe. The minimum evaluation will include visual assessment of the transformations and basic quantitative metrics.
+
+\section{Data}
+
+For training our model, we will use a carefully selected subset of existing datasets. From the LSUN Rooms dataset, we will extract a manageable portion (approximately 5,000-10,000 images) focusing on our target room type. We will also use a subset of the ADE20K dataset to provide semantic understanding of room elements. For style reference, we will create a small curated collection of approximately 100-200 images per style from freely available design websites.
+
+Given the inherent difficulty in obtaining paired before/after samples of the same room in different styles, we will explore unpaired image-to-image translation approaches inspired by cycle-consistent adversarial networks \cite{zhu_unpaired_2020}.
+
+\section{Computing Resources}
+
+Our project will require moderate computational resources for training. We anticipate needing access to GPUs, ideally with at least 8GB VRAM. We estimate approximately 20-30 hours of GPU time for training our models. We will need around 20GB of storage for our focused dataset subsets. We plan to utilize our own computers, the university's computing resources or Google Colab for our development work.
+
+\section{Nice-to-Haves}
+
+We have prioritized potential extensions based on feasibility within our seven-week timeframe:
+
+Priority 1: Enhancing the model to better preserve important structural elements while modifying stylistic elements. This would improve the realism and utility of our system.
+
+Priority 2: Expanding to support an additional 1-2 design styles beyond our initial set. This would demonstrate the flexibility of our approach.
+
+Priority 3: Basic style intensity control, allowing users to adjust how strongly the style is applied to the original image.
+
+Lower priority extensions that we would consider only if substantial progress is made on the core functionality include handling additional room types beyond our initial focus and implementing a simple user interface for demonstration purposes.
+
+\section{Related Work}
+
+Our approach builds upon several key research areas in computer vision and generative models:
+
+\textbf{Image-to-Image Translation}: CycleGAN \cite{zhu_unpaired_2020} established methods for unpaired image translation without requiring direct before/after examples. Pix2Pix \cite{isola_image--image_2017} demonstrated supervised image translation when paired data is available. More recent approaches like MUNIT \cite{huang_multimodal_2018} and SPADE \cite{park_semantic_2019} have further advanced capabilities in this area.
+
+\textbf{Neural Style Transfer}: The work of Gatys et al. \cite{gatys_image_2016} introduced neural methods for transferring artistic styles to photographs. Subsequent research by Huang et al. \cite{huang_arbitrary_2017} and Li et al. \cite{li_universal_2017} developed techniques that more effectively separate content from style.
+
+\textbf{Generative Models}: Recent advances in generative modeling include StyleGAN \cite{karras_style-based_2019} for high-quality image synthesis and diffusion models like DALL-E 2 \cite{ramesh_hierarchical_2022} and Stable Diffusion \cite{rombach_high-resolution_2022} for text-guided image generation.
+
+\textbf{Commercial Applications}: Several existing tools like Planner 5D and RoomStyler offer interior design visualization, though they typically use 3D modeling approaches rather than direct image transformation.
+
+\section{Proposed Approach}
+
+Our technical approach focuses on developing a generative model for image-to-image translation specialized for interior design. We will develop an encoder-decoder architecture where:
+
+The encoder will extract structural and content features from input room images. This component will focus on preserving the spatial layout and key elements of the room.
+
+The decoder will generate transformed images by combining the content features with style information. We will experiment with different mechanisms for style injection, including adaptive instance normalization and similar techniques.
+
+A discriminator network will be trained to distinguish between real and generated images, helping to ensure visual quality and style adherence.
+
+We will develop these components from first principles, implementing and training the networks ourselves to gain a deep understanding of the underlying techniques.
+
+\section{Implementation Timeline}
+
+Our revised implementation timeline spans the available seven weeks from March 28 to May 16, 2025:
+
+Week 1 (March 30-April 4): Dataset preparation, including selecting and preprocessing appropriate subsets of room images and style references.
+
+Weeks 2-3 (April 5-18): Architecture design and initial implementation of the core image translation network.
+
+Weeks 4-5 (April 19-May 2): Training and iterative refinement of the model, focusing on improving quality for our target styles and room types.
+
+Weeks 6-7 (May 3-16): Evaluation, documentation, and report writing, with any remaining time dedicated to implementing priority extensions.
+
+\section{Conclusion}
+
+Decogen represents an educational exploration of deep learning applied to the practical challenge of interior design visualization. Through this project, we aim to develop and implement our own image transformation system and gain hands-on experience with generative models. While we recognize the challenges involved, particularly given our timeframe and beginning experience level, we believe this project offers valuable learning opportunities in implementing deep neural networks from scratch.
+
+% ==============================================================================
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography.bib}
+
+\end{document}
