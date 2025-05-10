@@ -1,0 +1,4 @@
+# Ignore the wandb directory
+/wandb
+*.err
+*.out
