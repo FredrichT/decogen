@@ -72,7 +72,33 @@ bathroom-style-transfer/
 
 ## Dataset
 
-This project uses bathroom interior design images organized by style. The dataset is structured as follows:
+This project uses a curated subset of bathroom interior design images originally sourced from the "Interior Design Images and Metadata Dataset from Pinterest" (available on Kaggle as "galinakg/interior-design-images-and-metadata").
+
+### Dataset Modifications
+
+The original dataset contained multiple room types (bathroom, bedroom, kitchen, living_room) with various design styles, along with CSV metadata files. For this implementation:
+
+- We focused exclusively on bathroom images for better model specialization
+- The dataset was cleaned to remove:
+  - Images containing text/writing
+  - Images showing only colors or palettes
+  - Images with single objects rather than entire rooms
+- CSV metadata files were removed to work directly with image files
+- The cleaned images were organized into style-specific directories following the structure outlined in the README
+
+### Design Styles
+
+Each bathroom image is categorized into one of five interior design styles:
+
+- **Boho**: Bohemian style featuring eclectic, global influences with casual and layered aesthetics
+- **Industrial**: Raw, utilitarian style with exposed materials, metal fixtures, and minimally finished surfaces
+- **Minimalist**: Clean, uncluttered spaces with simple color palettes and essential fixtures
+- **Modern**: Contemporary designs with clean lines, updated materials, and functional aesthetics
+- **Scandinavian**: Light, airy spaces with natural materials, neutral colors, and functional simplicity
+
+### Dataset Structure
+
+The dataset is organized as follows:
 
 ```
 dataset/bathroom/
@@ -84,6 +110,11 @@ dataset/bathroom/
 ```
 
 Each image should be a clean, high-quality photograph of a bathroom interior in the corresponding style.
+
+### Citation
+
+When using this dataset approach in your research or projects, please cite the original dataset:
+"Interior Design Images and Metadata Dataset from Pinterest" (Kaggle: galinakg/interior-design-images-and-metadata)
 
 ## Usage
 

@@ -1,0 +1,58 @@
+\begin{thebibliography}{10}
+
+\bibitem{isola2017image}
+Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei~A Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 1125--1134, 2017.
+
+\bibitem{zhu2017unpaired}
+Jun-Yan Zhu, Taesung Park, Phillip Isola, and Alexei~A Efros.
+\newblock Unpaired image-to-image translation using cycle-consistent adversarial networks.
+\newblock In {\em Proceedings of the IEEE international conference on computer vision}, pages 2223--2232, 2017.
+
+\bibitem{gatys2016image}
+Leon~A Gatys, Alexander~S Ecker, and Matthias Bethge.
+\newblock Image style transfer using convolutional neural networks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and pattern recognition}, pages 2414--2423, 2016.
+
+\bibitem{johnson2016perceptual}
+Justin Johnson, Alexandre Alahi, and Li~Fei-Fei.
+\newblock Perceptual losses for real-time style transfer and super-resolution.
+\newblock In {\em European conference on computer vision}, pages 694--711. Springer, 2016.
+
+\bibitem{huang2017arbitrary}
+Xun Huang and Serge Belongie.
+\newblock Arbitrary style transfer in real-time with adaptive instance normalization.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision}, pages 1501--1510, 2017.
+
+\bibitem{li2017universal}
+Yijun Li, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, and Ming-Hsuan Yang.
+\newblock Universal style transfer via feature transforms.
+\newblock In {\em Advances in neural information processing systems}, pages 386--396, 2017.
+
+\bibitem{ho2020denoising}
+Jonathan Ho, Ajay Jain, and Pieter Abbeel.
+\newblock Denoising diffusion probabilistic models.
+\newblock In {\em Advances in Neural Information Processing Systems}, volume~33, pages 6840--6851, 2020.
+
+\bibitem{ramesh2022hierarchical}
+Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen.
+\newblock Hierarchical text-conditional image generation with clip latents.
+\newblock {\em arXiv preprint arXiv:2204.06125}, 2022.
+
+\bibitem{rombach2022high}
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj{\"o}rn Ommer.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pages 10684--10695, 2022.
+
+\bibitem{saharia2022palette}
+Chitwan Saharia, William Chan, Huiwen Chang, Christopher~A Lee, Jonathan Ho, Tim Salimans, David~J Fleet, and Mohammad Norouzi.
+\newblock Palette: Image-to-image diffusion models.
+\newblock In {\em ACM SIGGRAPH 2022 Conference Proceedings}, pages 1--10, 2022.
+
+\bibitem{fu2022digital}
+Xuhui Fu.
+\newblock Digital image art style transfer algorithm based on cyclegan.
+\newblock {\em Scientific Programming}, 2022:6075398, 2022.
+
+\end{thebibliography}

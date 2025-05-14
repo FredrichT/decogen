@@ -18,7 +18,7 @@
 
 % ==============================================================================
 
-\title{\Large{INFO8010: Decogen}}
+\title{\Large{INFO8010: Interior Design Style Transfer}}
 \vspace{1cm}
 \author{\small{\bf Marie Goffin}}
 \affiliation{\texttt{mgoffin@student.uliege.be} (\texttt{s191956})}
@@ -31,75 +31,238 @@
 
 \section{Introduction}
 
-Interior design visualization and virtual renovation are challenging tasks that traditionally require specialized skills and software. Our project, Decogen, aims to develop a deep learning-based system that allows users to take a photo of a room and transform it according to specific design styles (e.g., minimalist, modern, industrial). Unlike existing solutions that often require manual editing or 3D modeling, our approach will enable style transfer while preserving the structural elements of the original space.
+Interior design visualization remains challenging for non-professionals. Most people struggle to imagine how their spaces would look in different design styles. Traditional visualization methods require either professional design skills or extensive photo editing expertise.\\
 
-This project combines conditional image generation and style transfer techniques to create a practical application. We aim to build a model that can understand spatial relationships and design aesthetics to generate transformed interior spaces.
+In this paper, we explore a machine learning approach for transforming room interior images between design styles. Our method investigates an enhanced CycleGAN architecture that aims to preserve structural elements while changing aesthetic features.\\
 
-\section{Minimum Viable Project}
+Our work examines:
 
-Our minimum viable project will focus on developing a neural network architecture that transforms input images of rooms according to specified design styles. We will implement a system that can handle 2-3 distinct interior design styles (e.g., minimalist and modern) while preserving basic structural elements like walls and windows. The system will accept room photographs as input and generate stylistically transformed versions as output. We will focus on a specific room type (such as living rooms) to make the problem more tractable within our timeframe. The minimum evaluation will include visual assessment of the transformations and basic quantitative metrics.
+\begin{itemize}
+    \item Adapting CycleGAN for room style transfer
+    \item Implementing multi-scale discriminators and improved residual blocks 
+    \item Testing a structural preservation loss to maintain architectural elements
+    \item Evaluating results using LPIPS and FID metrics
+\end{itemize}
 
-\section{Data}
-
-For training our model, we will use a carefully selected subset of existing datasets. From the LSUN Rooms dataset, we will extract a manageable portion (approximately 5,000-10,000 images) focusing on our target room type. We will also use a subset of the ADE20K dataset to provide semantic understanding of room elements. For style reference, we will create a small curated collection of approximately 100-200 images per style from freely available design websites.
-
-Given the inherent difficulty in obtaining paired before/after samples of the same room in different styles, we will explore unpaired image-to-image translation approaches inspired by cycle-consistent adversarial networks \cite{zhu_unpaired_2020}.
-
-\section{Computing Resources}
-
-Our project will require moderate computational resources for training. We anticipate needing access to GPUs, ideally with at least 8GB VRAM. We estimate approximately 20-30 hours of GPU time for training our models. We will need around 20GB of storage for our focused dataset subsets. We plan to utilize our own computers, the university's computing resources or Google Colab for our development work.
-
-\section{Nice-to-Haves}
-
-We have prioritized potential extensions based on feasibility within our seven-week timeframe:
-
-Priority 1: Enhancing the model to better preserve important structural elements while modifying stylistic elements. This would improve the realism and utility of our system.
-
-Priority 2: Expanding to support an additional 1-2 design styles beyond our initial set. This would demonstrate the flexibility of our approach.
-
-Priority 3: Basic style intensity control, allowing users to adjust how strongly the style is applied to the original image.
-
-Lower priority extensions that we would consider only if substantial progress is made on the core functionality include handling additional room types beyond our initial focus and implementing a simple user interface for demonstration purposes.
+We focus specifically on transferring between industrial and scandinavian bathroom styles. Our approach works with unpaired datasets, addressing the practical limitation that paired before/after images of the same room in different styles are rarely available.
 
 \section{Related Work}
 
-Our approach builds upon several key research areas in computer vision and generative models:
+\subsection{Image-to-Image Translation}
+Image-to-image translation has seen significant progress in recent years. Pix2Pix \cite{isola2017image} introduced a general framework for supervised image translation using conditional GANs, requiring paired training data. CycleGAN \cite{zhu2017unpaired} extended this approach to the unpaired setting by introducing cycle consistency loss, enabling training without directly corresponding before/after images. This unpaired approach is particularly valuable for interior design applications, where obtaining before/after photos of the same room in different styles is difficult.
 
-\textbf{Image-to-Image Translation}: CycleGAN \cite{zhu_unpaired_2020} established methods for unpaired image translation without requiring direct before/after examples. Pix2Pix \cite{isola_image--image_2017} demonstrated supervised image translation when paired data is available. More recent approaches like MUNIT \cite{huang_multimodal_2018} and SPADE \cite{park_semantic_2019} have further advanced capabilities in this area.
+\subsection{Style Transfer}
+Neural style transfer, explored by Gatys et al. \cite{gatys2016image}, showed the ability to transfer artistic styles to photographs using feature representations from pre-trained networks. Subsequent approaches improved efficiency \cite{johnson2016perceptual} and versatility \cite{huang2017arbitrary}. In particular, adaptive instance normalization (AdaIN) \cite{huang2017arbitrary} and whitening and coloring transforms (WCT) \cite{li2017universal} demonstrated better separation of content and style. While these methods work well for artistic style transfer, they often struggle with the structural preservation needs of interior design applications.
 
-\textbf{Neural Style Transfer}: The work of Gatys et al. \cite{gatys_image_2016} introduced neural methods for transferring artistic styles to photographs. Subsequent research by Huang et al. \cite{huang_arbitrary_2017} and Li et al. \cite{li_universal_2017} developed techniques that more effectively separate content from style.
+\subsection{Diffusion Models}
+More recently, diffusion-based generative models have shown exceptional capabilities in image generation and manipulation tasks. Denoising diffusion probabilistic models (DDPM) \cite{ho2020denoising} introduced a new paradigm for high-quality image synthesis. These techniques have evolved into powerful text-to-image models such as DALL-E 2 \cite{ramesh2022hierarchical} and latent diffusion models \cite{rombach2022high}. 
 
-\textbf{Generative Models}: Recent advances in generative modeling include StyleGAN \cite{karras_style-based_2019} for high-quality image synthesis and diffusion models like DALL-E 2 \cite{ramesh_hierarchical_2022} and Stable Diffusion \cite{rombach_high-resolution_2022} for text-guided image generation.
+While these models can produce impressive style transformations with text guidance, they typically require large-scale training data and computational resources. Some recent work has explored using diffusion models specifically for image-to-image translation tasks \cite{saharia2022palette}, though often with different training requirements compared to GAN-based approaches.
 
-\textbf{Commercial Applications}: Several existing tools like Planner 5D and RoomStyler offer interior design visualization, though they typically use 3D modeling approaches rather than direct image transformation.
+\subsection{Interior Design Applications}
+Image translation and style transfer techniques have been applied to interior design in both academic research and commercial applications. Several existing tools offer interior visualization capabilities. Our work builds upon Fu \cite{fu2022digital}, who demonstrated promising results by enhancing CycleGAN for art style transfer. 
 
-\section{Proposed Approach}
+We adapt Fu's architectural modifications—including improved residual blocks, multi-scale discriminators, and specialized loss functions—specifically for room style transfer. While newer diffusion-based approaches show promise, we chose to work with CycleGAN for its established ability to work with unpaired image datasets of modest size and its more accessible computational requirements.
 
-Our technical approach focuses on developing a generative model for image-to-image translation specialized for interior design. We will develop an encoder-decoder architecture where:
+\section{Methodology}
 
-The encoder will extract structural and content features from input room images. This component will focus on preserving the spatial layout and key elements of the room.
+\subsection{Dataset}
 
-The decoder will generate transformed images by combining the content features with style information. We will experiment with different mechanisms for style injection, including adaptive instance normalization and similar techniques.
+Our project uses a subset of bathroom interior images sourced from the "Interior Design Images and Metadata Dataset from Pinterest" (available on Kaggle as "galinakg/interior-design-images-and-metadata"). The original dataset contained multiple room types (bathroom, bedroom, kitchen, living room) with various design styles, accompanied by CSV metadata files linking images to style categories and attributes.
 
-A discriminator network will be trained to distinguish between real and generated images, helping to ensure visual quality and style adherence.
+For our implementation, we made several modifications to the dataset:
 
-We will develop these components from first principles, implementing and training the networks ourselves to gain a deep understanding of the underlying techniques.
+\begin{itemize}
+    \item We focused exclusively on bathroom images to enable our model to specialize in a single room type
+    \item We cleaned the dataset to remove:
+      \begin{itemize}
+        \item Images containing text/writing
+        \item Images showing only color palettes
+        \item Images with single objects rather than complete rooms
+      \end{itemize}
+    \item We removed the CSV metadata files and instead organized images directly into style-specific directories
+\end{itemize}
 
-\section{Implementation Timeline}
+While the original dataset contained five bathroom design styles (boho, industrial, minimalist, modern, and scandinavian), we chose to work with \textbf{industrial} and \textbf{scandinavian} styles. This decision was based on the clear visual contrast between these styles—industrial bathrooms typically feature raw, utilitarian elements with exposed materials and metal fixtures, while scandinavian bathrooms are characterized by light, airy spaces with natural materials and neutral colors. We reasoned that this strong stylistic difference would make the style transfer effects more pronounced and easier to evaluate.\\
 
-Our revised implementation timeline spans the available seven weeks from March 28 to May 16, 2025:
+For training our model, we split each style category into train (70\%), validation (15\%), and test (15\%) sets. This resulted in approximately 105 industrial and 79 scandinavian bathroom images for training, with proportional numbers for validation and testing.
 
-Week 1 (March 30-April 4): Dataset preparation, including selecting and preprocessing appropriate subsets of room images and style references.
+\subsection{Model Architecture}
 
-Weeks 2-3 (April 5-18): Architecture design and initial implementation of the core image translation network.
+Our architecture is based on CycleGAN \cite{zhu2017unpaired} with several enhancements inspired by Fu \cite{fu2022digital}. The overall system consists of two generator networks and two discriminator networks, enabling bidirectional translation between industrial and scandinavian bathroom styles. Figure~\ref{fig:architecture} illustrates the high-level architecture of our system.
 
-Weeks 4-5 (April 19-May 2): Training and iterative refinement of the model, focusing on improving quality for our target styles and room types.
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=\textwidth]{cyclegan_architecture.pdf}
+    \caption{Enhanced CycleGAN architecture for bathroom style transfer. The system includes two generators (G$_A$ transforms Industrial to Scandinavian, G$_B$ transforms Scandinavian to Industrial) and two discriminators (D$_A$ and D$_B$). Additional loss functions (cycle consistency and structural preservation) help maintain both the content integrity and the distinctive stylistic elements.}
+    \label{fig:architecture}
+\end{figure}
 
-Weeks 6-7 (May 3-16): Evaluation, documentation, and report writing, with any remaining time dedicated to implementing priority extensions.
+\subsubsection{Enhanced Generator}
 
-\section{Conclusion}
+Our generator network uses a ResNet-based architecture with improvements for interior design style transfer:
 
-Decogen represents an educational exploration of deep learning applied to the practical challenge of interior design visualization. Through this project, we aim to develop and implement our own image transformation system and gain hands-on experience with generative models. While we recognize the challenges involved, particularly given our timeframe and beginning experience level, we believe this project offers valuable learning opportunities in implementing deep neural networks from scratch.
+\begin{itemize}
+    \item Initial reflection padding and 7×7 convolution to preserve edge information, which is critical for maintaining bathroom structural elements
+    \item Two downsampling layers with stride-2 convolutions and instance normalization
+    \item Nine residual blocks for feature transformation while maintaining spatial information
+    \item Improved upsampling using bilinear interpolation followed by 3×3 convolutions to reduce checkerboard artifacts common in transpose convolutions
+    \item Final reflection padding and 7×7 convolution with Tanh activation
+\end{itemize}
+
+The dual generator structure allows us to create both Industrial→Scandinavian (G$_A$) and Scandinavian→Industrial (G$_B$) transformations. This bidirectionality enables cycle consistency training without requiring paired images.
+
+\subsubsection{Multi-scale Discriminator}
+
+To better capture both global structure and local details, we implemented a multi-scale discriminator that operates at two resolutions:
+
+\begin{itemize}
+    \item Full-resolution discriminator for capturing overall image coherence and stylistic patterns
+    \item Half-resolution discriminator for focusing on larger-scale features (like layout and fixtures)
+    \item Each discriminator uses a PatchGAN architecture with spectral normalization for training stability
+\end{itemize}
+
+This multi-scale approach helps the model better distinguish between industrial and scandinavian styles while maintaining structural coherence. For example, the full-resolution discriminator might focus on detailed textures like tile patterns or fixture finishes, while the half-resolution discriminator captures more general properties like color schemes and spatial arrangements.
+
+\subsubsection{Perceptual Network}
+
+For our structural preservation loss, we incorporated a perceptual network based on pre-trained VGG19 features. This network extracts features at three different depths, allowing us to capture different levels of structural information:
+
+\begin{itemize}
+    \item Low-level features (edges, textures) from early layers, which help preserve basic elements like walls and fixtures
+    \item Mid-level features (patterns, local structures) from middle layers, capturing bathroom fixtures and their arrangement
+    \item High-level features (spatial arrangements) from deeper layers, representing overall bathroom layout
+\end{itemize}
+
+By weighting these feature levels differently in our loss function (with higher weight on low and mid-level features), we encourage the model to preserve structural elements while still allowing stylistic changes appropriate for the target domain. This is especially important for bathroom style transfer, where we want to maintain the layout and fixtures while changing decorative elements to match either industrial or scandinavian design aesthetics.
+
+\subsection{Loss Functions}
+
+Our training objective combines several loss terms:
+
+\begin{equation}
+\mathcal{L} = \mathcal{L}_{GAN} + \lambda_{cycle}\mathcal{L}_{cycle} + \lambda_{id}\mathcal{L}_{id} + \lambda_{struct}\mathcal{L}_{struct}
+\end{equation}
+
+\subsubsection{Adversarial Loss}
+
+We use the standard GAN loss with mean squared error (MSE) for stable training:
+
+\begin{equation}
+\mathcal{L}_{GAN}(G, D) = \mathbb{E}_{y}[(D(y) - 1)^2] + \mathbb{E}_{x}[D(G(x))^2]
+\end{equation}
+
+\subsubsection{Cycle Consistency Loss}
+
+To ensure that the transformed images can be mapped back to their original versions:
+
+\begin{equation}
+\mathcal{L}_{cycle} = \mathbb{E}_{x}[||G_B(G_A(x)) - x||_1] + \mathbb{E}_{y}[||G_A(G_B(y)) - y||_1]
+\end{equation}
+
+\subsubsection{Identity Loss}
+
+To encourage color preservation when appropriate:
+
+\begin{equation}
+\mathcal{L}_{id} = \mathbb{E}_{x}[||G_B(x) - x||_1] + \mathbb{E}_{y}[||G_A(y) - y||_1]
+\end{equation}
+
+\subsubsection{Structural Preservation Loss}
+
+Our key innovation is a structural preservation loss that helps maintain architectural elements while changing style:
+
+\begin{equation}
+\mathcal{L}_{struct} = \sum_{i=1}^{3} w_i \cdot ||F_i(G_A(x)) - F_i(x)||_1 + \sum_{i=1}^{3} w_i \cdot ||F_i(G_B(y)) - F_i(y)||_1
+\end{equation}
+
+where $F_i$ represents the feature maps from the $i$-th layer of the perceptual network, and $w_i$ are weights decreasing with depth to allow style changes while preserving structure.
+
+\section{Implementation}
+
+\subsection{System Overview}
+
+We implemented our system in Python using PyTorch as the deep learning framework. The codebase is organized into several key components:
+
+\begin{itemize}
+    \item \texttt{data\_preparation.py}: Dataset loading, preprocessing, and splitting
+    \item \texttt{train.py}: Training script with Weights \& Biases integration
+    \item \texttt{evaluate.py}: Evaluation metrics computation (LPIPS, FID)
+    \item \texttt{inference.py}: Style transfer application to new images
+    \item \texttt{models/}: Neural network architecture implementation
+    \item \texttt{utils.py}: Utility functions for image processing
+\end{itemize}
+
+\subsection{Training Process}
+
+We trained our model using the following hyperparameters:
+
+\begin{itemize}
+    \item Batch size: 4
+    \item Learning rate: 0.0002 with Adam optimizer ($\beta_1=0.5$, $\beta_2=0.999$)
+    \item Training epochs: 100
+    \item Image size: 256×256
+    \item Loss weights: $\lambda_{cycle}=10.0$, $\lambda_{id}=0.5$, $\lambda_{struct}=10.0$
+\end{itemize}
+
+The training process included several strategies for stability:
+\begin{itemize}
+    \item Learning rate decay using a step scheduler (half the rate every 30 epochs)
+    \item Image buffer for discriminator training to reduce oscillation
+    \item Spectral normalization in the discriminator
+\end{itemize}
+
+We used Weights \& Biases for experiment tracking, allowing us to monitor loss curves, learning rates, and generated samples throughout training.
+
+\subsection{Evaluation Metrics}
+
+We evaluated our model using two complementary metrics:
+
+\begin{itemize}
+    \item \textbf{LPIPS} (Learned Perceptual Image Patch Similarity): Measures perceptual similarity between images, used to evaluate both cycle consistency (how well the original image is reconstructed after a full cycle) and structural preservation (how well structural elements are maintained)
+    \item \textbf{FID} (Fréchet Inception Distance): Measures the distance between the feature distributions of real and generated images, providing an assessment of overall generation quality
+\end{itemize}
+
+\section{Experiments and Results}
+
+% Placeholder for experiments and results
+\textit{This section will be populated with actual experimental results once they are available. It will include:}
+
+\begin{itemize}
+    \item \textit{Visual examples of style transfer between different bathroom styles}
+    \item \textit{Quantitative evaluation using LPIPS and FID metrics}
+    \item \textit{Ablation studies examining the contribution of different architectural components}
+    \item \textit{Comparison with baseline methods}
+\end{itemize}
+
+\section{Discussion}
+
+% Placeholder for discussion
+\textit{This section will analyze the results and discuss:}
+
+\begin{itemize}
+    \item \textit{Strengths and limitations of our approach}
+    \item \textit{Analysis of which bathroom styles were most challenging to transfer}
+    \item \textit{The effectiveness of the structural preservation loss}
+    \item \textit{Observed failure cases and potential improvements}
+\end{itemize}
+
+\section{Conclusion and Future Work}
+
+In this paper, we presented a deep learning approach for bathroom interior design style transfer using an enhanced CycleGAN architecture. Our system can transform bathroom images between five different design styles while preserving structural elements. The key innovations include a multi-scale discriminator architecture and a structural preservation loss function specifically designed for interior spaces.
+
+% Placeholder for specific conclusions
+\textit{This section will be expanded with concrete conclusions based on experimental results.}
+
+Future work could explore several promising directions:
+
+\begin{itemize}
+    \item Extending the approach to other room types beyond bathrooms
+    \item Incorporating semantic segmentation to better preserve specific elements
+    \item Developing controllable style transfer with adjustable intensity
+    \item Exploring real-time implementation for interactive applications
+\end{itemize}
+
 
 % ==============================================================================
 
