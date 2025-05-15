@@ -1,0 +1,14 @@
+Evaluation Results:
+
+LPIPS Scores (lower is better for cycle consistency):
+Cycle Consistency A: 0.2529
+Cycle Consistency B: 0.2544
+Average Cycle Consistency: 0.2536
+Structural A to B: 0.2620
+Structural B to A: 0.2163
+Average Structural: 0.2391
+
+FID Scores (lower is better):
+FID A to B: 186.0744
+FID B to A: 199.4874
+Average FID: 192.7809

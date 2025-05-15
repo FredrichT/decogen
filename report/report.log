@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  14 MAY 2025 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  15 MAY 2025 16:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -331,123 +331,407 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip58
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen155
+\captionmargin=\dimen156
+\caption@leftmargin=\dimen157
+\caption@rightmargin=\dimen158
+\caption@width=\dimen159
+\caption@indent=\dimen160
+\caption@parindent=\dimen161
+\caption@hangindent=\dimen162
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\par \vskip \abovecaptionskip \begingroup \small \rmfamily \sbox \@tempboxa {\let \\\heading@cr \@make@capt@title {#1}{#2}}\@ifdim {\wd \@tempboxa >\hsize }{\begingroup \samepage \flushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \endgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil }}\endgroup \vskip \belowcaptionskip  on input line 1175.
 )
-Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 16.
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 16.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 16.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 16.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count294
+\c@continuedfloat=\count295
+Package caption Info: hyperref package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count296
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count297
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count298
+\float@exts=\toks34
+\float@box=\box68
+\@float@everytoks=\toks35
+\@floatcapt=\box69
+)
+Class revtex4-1 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 18.
+
+
+Class revtex4-1 Warning: Repair the float package.
+
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 18.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 18.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 18.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count294
-\l__pdf_internal_box=\box68
+\l__color_backend_stack_int=\count299
+\l__pdf_internal_box=\box70
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count295
-\scratchdimen=\dimen155
-\scratchbox=\box69
-\nofMPsegments=\count296
-\nofMParguments=\count297
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count298
-\MPscratchDim=\dimen156
-\MPnumerator=\count299
-\makeMPintoPDFobject=\count300
-\everyMPtoPDFconversion=\toks35
+\scratchcounter=\count300
+\scratchdimen=\dimen163
+\scratchbox=\box71
+\nofMPsegments=\count301
+\nofMParguments=\count302
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count303
+\MPscratchDim=\dimen164
+\MPnumerator=\count304
+\makeMPintoPDFobject=\count305
+\everyMPtoPDFconversion=\toks37
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 18.
  (./report.out) (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 16.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 18.
 \openout3 = `reportNotes.bib'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 []\OT1/cmr/m/n/10 Image-to-image trans-la-tion has seen sig-nif-i-cant
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 52--53
+Underfull \hbox (badness 1783) in paragraph at lines 54--55
 \OT1/cmr/m/n/10 gen-eral frame-work for su-per-vised im-age trans-la-tion
  []
 
 
-Underfull \hbox (badness 2057) in paragraph at lines 52--53
+Underfull \hbox (badness 2057) in paragraph at lines 54--55
 \OT1/cmr/m/n/10 train-ing with-out di-rectly cor-re-spond-ing be-fore/after
  []
 
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
+<assets/cyclegan_architecture.png, id=243, 855.195pt x 684.5575pt>
+File: assets/cyclegan_architecture.png Graphic file (type png)
+<use assets/cyclegan_architecture.png>
+Package pdftex.def Info: assets/cyclegan_architecture.png  used on input line 98.
+(pdftex.def)             Requested size: 255.0pt x 204.11537pt.
 
-Underfull \hbox (badness 2662) in paragraph at lines 113--114
+Overfull \hbox (9.0pt too wide) in paragraph at lines 98--99
+ [][] 
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 115--116
 []\OT1/cmr/m/n/10 The dual gen-er-a-tor struc-ture al-lows us to cre-
  []
 
-[2]
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 152.
+[2 <./assets/cyclegan_architecture.png>]
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 150.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbold/Ubbold.fd)
-Overfull \hbox (46.84096pt too wide) detected at line 177
-[][][]\OMS/cmsy/m/n/10 L[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 jj[] \OT1/cmr/m/n/10 + [] \OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^A jj\OML/cmm/m/it/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 jj[]
+Underfull \hbox (badness 1092) in paragraph at lines 188--189
+ []\OT1/cmtt/m/n/10 data[]preparation.py\OT1/cmr/m/n/10 : Han-dles dataset op-er-a-
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 190--191
- []\OT1/cmtt/m/n/10 evaluate.py\OT1/cmr/m/n/10 : Eval-u-a-tion met-rics com-pu-ta-tion
+Underfull \hbox (badness 1348) in paragraph at lines 188--189
+ \OT1/cmr/m/n/10 into train/validation/test sets (70%/15%/15%),
  []
 
 [3]
-Underfull \hbox (badness 1033) in paragraph at lines 262--263
- []\OT1/cmr/m/n/10 Developing con-trol-lable style trans-fer with ad-
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+
  []
 
-(./report.bbl [4]
+
+Underfull \hbox (badness 1490) in paragraph at lines 241--242
+\OT1/cmr/m/n/10 demon-strates rapid ini-tial im-prove-ment fol-lowed by
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
+
+ []
+
+[4]
+Underfull \hbox (badness 1168) in paragraph at lines 251--252
+[]\OT1/cmr/m/n/10 The domain-specific GAN losses (Fig-ures []12[] and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+
+Underfull \hbox (badness 4048) in paragraph at lines 257--258
+\OT1/cmr/m/n/10 demon-strate ef-fec-tive learn-ing of the bidi-rec-tional
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 310--311
+[]\OT1/cmr/m/n/10 The LPIPS scores mea-sure per-cep-tual sim-i-lar-ity
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
+
+ []
+
+[5]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 313.
+
+<assets/real_A.png, id=312, 256.96pt x 256.96pt>
+File: assets/real_A.png Graphic file (type png)
+<use assets/real_A.png>
+Package pdftex.def Info: assets/real_A.png  used on input line 322.
+(pdftex.def)             Requested size: 127.5pt x 127.49945pt.
+<assets/fake_B.png, id=313, 256.96pt x 256.96pt>
+File: assets/fake_B.png Graphic file (type png)
+<use assets/fake_B.png>
+Package pdftex.def Info: assets/fake_B.png  used on input line 330.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+<assets/rec_A.png, id=314, 256.96pt x 256.96pt>
+File: assets/rec_A.png Graphic file (type png)
+<use assets/rec_A.png>
+Package pdftex.def Info: assets/rec_A.png  used on input line 336.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<assets/real_B.png, id=316, 256.96pt x 256.96pt>
+File: assets/real_B.png Graphic file (type png)
+<use assets/real_B.png>
+Package pdftex.def Info: assets/real_B.png  used on input line 352.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+<assets/fake_A.png, id=317, 256.96pt x 256.96pt>
+File: assets/fake_A.png Graphic file (type png)
+<use assets/fake_A.png>
+Package pdftex.def Info: assets/fake_A.png  used on input line 360.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+<assets/rec_B.png, id=318, 256.96pt x 256.96pt>
+File: assets/rec_B.png Graphic file (type png)
+<use assets/rec_B.png>
+Package pdftex.def Info: assets/rec_B.png  used on input line 366.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+
+Underfull \hbox (badness 1117) in paragraph at lines 374--375
+[]\OT1/cmr/m/n/10 When con-vert-ing from Scan-di-na-vian to In-dus-trial
+ []
+
+<assets/sample_1.png, id=320, 1136.0844pt x 570.2103pt>
+File: assets/sample_1.png Graphic file (type png)
+<use assets/sample_1.png>
+Package pdftex.def Info: assets/sample_1.png  used on input line 383.
+(pdftex.def)             Requested size: 255.0pt x 127.97855pt.
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 383--384
+ [][] 
+ []
+
+[6 <./assets/real_A.png (PNG copy)> <./assets/fake_B.png (PNG copy)> <./assets/rec_A.png (PNG copy)> <./assets/real_B.png (PNG copy)> <./assets/fake_A.png (PNG copy)> <./assets/rec_B.png (PNG copy)>]
+Underfull \hbox (badness 1259) in paragraph at lines 392--393
+[]\OT1/cmr/m/n/10 A key fea-ture of our ap-proach is the struc-tural
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
+
+ []
+
+
+Underfull \hbox (badness 3068) in paragraph at lines 414--415
+ []\OT1/cmr/m/n/10 Lack of material-specific trans-for-ma-tions that
+ []
+
+[7 <./assets/sample_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 463--464
+\OT1/cmr/m/n/10 bath-room im-ages be-tween in-dus-trial and scan-di-na-
+ []
+
+
+Underfull \hbox (badness 1509) in paragraph at lines 463--464
+\OT1/cmr/m/n/10 vian styles, chang-ing the at-mo-sphere and ma-te-rial
+ []
+
+
+Underfull \hbox (badness 3803) in paragraph at lines 463--464
+\OT1/cmr/m/n/10 bal-ance be-tween style trans-for-ma-tion and con-tent
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 463--464
+\OT1/cmr/m/n/10 show-ing clear stylis-tic changes from dark, metal-lic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
+
+ []
+
+[8]
+<assets/g_loss.png, id=343, 1734.48pt x 1332.98pt>
+File: assets/g_loss.png Graphic file (type png)
+<use assets/g_loss.png>
+Package pdftex.def Info: assets/g_loss.png  used on input line 479.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/d_loss.png, id=344, 1734.48pt x 1332.98pt>
+File: assets/d_loss.png Graphic file (type png)
+<use assets/d_loss.png>
+Package pdftex.def Info: assets/d_loss.png  used on input line 486.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/val_g_loss.png, id=345, 1734.48pt x 1332.98pt>
+File: assets/val_g_loss.png Graphic file (type png)
+<use assets/val_g_loss.png>
+Package pdftex.def Info: assets/val_g_loss.png  used on input line 493.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/val_d_loss.png, id=346, 1734.48pt x 1332.98pt>
+File: assets/val_d_loss.png Graphic file (type png)
+<use assets/val_d_loss.png>
+Package pdftex.def Info: assets/val_d_loss.png  used on input line 500.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/learning_rate.png, id=347, 1734.48pt x 1332.98pt>
+File: assets/learning_rate.png Graphic file (type png)
+<use assets/learning_rate.png>
+Package pdftex.def Info: assets/learning_rate.png  used on input line 509.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/gan_loss_A.png, id=348, 1734.48pt x 1332.98pt>
+File: assets/gan_loss_A.png Graphic file (type png)
+<use assets/gan_loss_A.png>
+Package pdftex.def Info: assets/gan_loss_A.png  used on input line 518.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+ [9 <./assets/g_loss.png> <./assets/d_loss.png> <./assets/val_g_loss.png> <./assets/val_d_loss.png> <./assets/learning_rate.png>]
+<assets/gan_loss_B.png, id=358, 1734.48pt x 1332.98pt>
+File: assets/gan_loss_B.png Graphic file (type png)
+<use assets/gan_loss_B.png>
+Package pdftex.def Info: assets/gan_loss_B.png  used on input line 525.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/d_loss_A.png, id=359, 1734.48pt x 1332.98pt>
+File: assets/d_loss_A.png Graphic file (type png)
+<use assets/d_loss_A.png>
+Package pdftex.def Info: assets/d_loss_A.png  used on input line 532.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/d_loss_B.png, id=360, 1734.48pt x 1332.98pt>
+File: assets/d_loss_B.png Graphic file (type png)
+<use assets/d_loss_B.png>
+Package pdftex.def Info: assets/d_loss_B.png  used on input line 539.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/cycle_loss_A.png, id=361, 1734.48pt x 1332.98pt>
+File: assets/cycle_loss_A.png Graphic file (type png)
+<use assets/cycle_loss_A.png>
+Package pdftex.def Info: assets/cycle_loss_A.png  used on input line 548.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+ [10 <./assets/gan_loss_A.png> <./assets/gan_loss_B.png> <./assets/d_loss_A.png> <./assets/d_loss_B.png>]
+<assets/cycle_loss_B.png, id=370, 1734.48pt x 1332.98pt>
+File: assets/cycle_loss_B.png Graphic file (type png)
+<use assets/cycle_loss_B.png>
+Package pdftex.def Info: assets/cycle_loss_B.png  used on input line 555.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/struct_loss_A.png, id=371, 1734.48pt x 1332.98pt>
+File: assets/struct_loss_A.png Graphic file (type png)
+<use assets/struct_loss_A.png>
+Package pdftex.def Info: assets/struct_loss_A.png  used on input line 562.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/struct_loss_B.png, id=372, 1734.48pt x 1332.98pt>
+File: assets/struct_loss_B.png Graphic file (type png)
+<use assets/struct_loss_B.png>
+Package pdftex.def Info: assets/struct_loss_B.png  used on input line 569.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+<assets/identity_loss_A.png, id=373, 1734.48pt x 1332.98pt>
+File: assets/identity_loss_A.png Graphic file (type png)
+<use assets/identity_loss_A.png>
+Package pdftex.def Info: assets/identity_loss_A.png  used on input line 578.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+ [11 <./assets/cycle_loss_A.png> <./assets/cycle_loss_B.png> <./assets/struct_loss_A.png> <./assets/struct_loss_B.png>]
+<assets/identity_loss_B.png, id=382, 1734.48pt x 1332.98pt>
+File: assets/identity_loss_B.png Graphic file (type png)
+<use assets/identity_loss_B.png>
+Package pdftex.def Info: assets/identity_loss_B.png  used on input line 585.
+(pdftex.def)             Requested size: 229.49844pt x 176.36476pt.
+ (./report.bbl
 Underfull \hbox (badness 4416) in paragraph at lines 49--52
  []\OT1/cmr/m/n/9 Chitwan Sa-haria, William Chan, Hui-wen Chang,
  []
@@ -462,27 +746,27 @@ Underfull \hbox (badness 1418) in paragraph at lines 54--57
  \OT1/cmr/m/n/9 rithm based on cy-cle-gan.  \OT1/cmr/m/it/9 Sci-en-tific Pro-gram-ming\OT1/cmr/m/n/9 ,
  []
 
-) [5] (./report.aux)
+) [12 <./assets/identity_loss_A.png> <./assets/identity_loss_B.png>] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: DCC37765B2B5851CDFDF673DBAA6F4F5;3875.
+(rerunfilecheck)             Checksum: 9009886C6338845535A07C920343EFDC;9056.
  ) 
 Here is how much of TeX's memory you used:
- 11883 strings out of 474116
- 177778 string characters out of 5743682
+ 13634 strings out of 474116
+ 212621 string characters out of 5743682
  1951187 words of memory out of 5000000
- 34027 multiletter control sequences out of 15000+600000
- 570308 words of font info for 82 fonts, out of 8000000 for 9000
+ 35711 multiletter control sequences out of 15000+600000
+ 570329 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,757b,624s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on report.pdf (5 pages, 239245 bytes).
+ 75i,8n,79p,940b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on report.pdf (12 pages, 3262807 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 482 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
+ 516 words of extra memory for PDF output out of 10000 (max. 10000000)
 

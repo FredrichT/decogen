@@ -55,4 +55,9 @@ Xuhui Fu.
 \newblock Digital image art style transfer algorithm based on cyclegan.
 \newblock {\em Scientific Programming}, 2022:6075398, 2022.
 
+\bibitem{miyato2018spectral}
+Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida.
+\newblock Spectral normalization for generative adversarial networks.
+\newblock In {\em International Conference on Learning Representations}, 2018.
+
 \end{thebibliography}
