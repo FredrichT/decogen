@@ -13,7 +13,7 @@ This project implements a bathroom interior design style transfer system using a
 ## Project Structure
 
 ```
-bathroom-style-transfer/
+decogen/
 ├── config.py                  # Configuration parameters
 ├── data_preparation.py        # Dataset preparation and loading
 ├── evaluate.py                # Model evaluation script
@@ -48,8 +48,8 @@ bathroom-style-transfer/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/bathroom-style-transfer.git
-   cd bathroom-style-transfer
+   git clone https://github.com/FredrichT/decogen.git
+   cd decogen
    ```
 
 2. Create and activate a conda environment:
