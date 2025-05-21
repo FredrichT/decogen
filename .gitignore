@@ -2,3 +2,4 @@
 /wandb
 *.err
 *.out
+/.history

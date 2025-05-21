@@ -20,12 +20,16 @@
 
 % ==============================================================================
 
-\title{\Large{INFO8010: Interior Design Style Transfer}}
+\title{\Large{DecoGen: Interior Design Style Transfer}}
 \vspace{1cm}
 \author{\small{\bf Marie Goffin}}
 \affiliation{\texttt{mgoffin@student.uliege.be} (\texttt{s191956})}
 \author{\small{\bf Thomas Fredrich}}
 \affiliation{\texttt{thomas.fredrich@student.uliege.be} (\texttt{s191717})}
+
+\begin{abstract}
+    We present DecoGen, a system addressing the challenge non-professionals face in visualizing interior design styles. Our enhanced CycleGAN architecture transforms unpaired bathroom images between industrial and scandinavian styles, employing multi-scale discriminators and structural preservation mechanisms. Quantitative evaluation shows LPIPS cycle consistency scores of 0.25 and reveals an asymmetric pattern: converting scandinavian to industrial styles (LPIPS 0.22) is more effective than the reverse direction (LPIPS 0.26). While our approach successfully transforms color schemes and textures, high FID scores (avg. 192.78) indicate limitations in capturing authentic style characteristics. The model preserves architectural elements but struggles with the structural modifications often required for complete style transformation. These results highlight the tension between structural preservation and meaningful style transfer in interior design applications. Code is available at \url{https://github.com/FredrichT/decogen}.
+\end{abstract}    
 
 \maketitle
 
@@ -33,18 +37,11 @@
 
 \section{Introduction}
 
-Interior design visualization remains challenging for non-professionals. Most people struggle to imagine how their spaces would look in different design styles. Traditional visualization methods require either professional design skills or extensive photo editing expertise.\\
+Interior design visualization remains challenging for non-professionals. Most people struggle to imagine how their spaces would look in different design styles. Traditional visualization methods require either professional design skills or extensive photo editing expertise.
 
-In this paper, we explore a machine learning approach for transforming room interior images between design styles. Our method investigates an enhanced CycleGAN architecture that aims to preserve structural elements while changing aesthetic features.\\
+In this paper, we explore a machine learning approach for transforming room interior images between design styles. Our method investigates an enhanced CycleGAN architecture that aims to preserve structural elements while changing aesthetic features.
 
-Our work examines:
-
-\begin{itemize}
-    \item Adapting CycleGAN for room style transfer
-    \item Implementing multi-scale discriminators and improved residual blocks 
-    \item Testing a structural preservation loss to maintain architectural elements
-    \item Evaluating results using LPIPS and FID metrics
-\end{itemize}
+Our work examines the adaptation of CycleGAN for room style transfer through several methodological contributions. First, we implement multi-scale discriminators and improved residual blocks to better capture both global structure and local stylistic elements. Second, we incorporate a structural preservation loss specifically designed to maintain architectural elements while allowing stylistic transformations. Finally, we evaluate our approach using established perceptual metrics, including LPIPS and FID, to quantify both the quality of style transfer and the preservation of structural integrity.
 
 We focus specifically on transferring between industrial and scandinavian bathroom styles. Our approach works with unpaired datasets, addressing the practical limitation that paired before/after images of the same room in different styles are rarely available.
 
@@ -66,28 +63,17 @@ Image translation and style transfer techniques have been applied to interior de
 
 We adapt Fu's architectural modifications—including improved residual blocks, multi-scale discriminators, and specialized loss functions—specifically for room style transfer. While newer diffusion-based approaches show promise, we chose to work with CycleGAN for its established ability to work with unpaired image datasets of modest size and its more accessible computational requirements.
 
-\section{Methodology}
+\section{Methods}
 
 \subsection{Dataset}
 
-Our project uses a subset of bathroom interior images sourced from the "Interior Design Images and Metadata Dataset from Pinterest" (available on Kaggle as "galinakg/interior-design-images-and-metadata"). The original dataset contained multiple room types (bathroom, bedroom, kitchen, living room) with various design styles, accompanied by CSV metadata files linking images to style categories and attributes.
+Our project employs a subset of bathroom interior images from the "Interior Design Images and Metadata Dataset from Pinterest" (available on Kaggle as "galinakg/interior-design-images-and-metadata"). The original dataset contains multiple room types (bathroom, bedroom, kitchen, living room) with various design styles, accompanied by CSV metadata files that link images to style categories and attributes.
 
-For our implementation, we made several modifications to the dataset:
+For our implementation, we apply several targeted modifications to the dataset. We restrict our focus exclusively to bathroom images to enable model specialization in a single room type, which allows for more effective style transfer learning. We conduct data cleaning by removing images containing text/writing, those showing only color palettes, and images with single objects rather than complete rooms. Additionally, we simplify the data organization by eliminating the CSV metadata files and instead structure images directly into style-specific directories for more straightforward processing.
 
-\begin{itemize}
-    \item We focused exclusively on bathroom images to enable our model to specialize in a single room type
-    \item We cleaned the dataset to remove:
-      \begin{itemize}
-        \item Images containing text/writing
-        \item Images showing only color palettes
-        \item Images with single objects rather than complete rooms
-      \end{itemize}
-    \item We removed the CSV metadata files and instead organized images directly into style-specific directories
-\end{itemize}
+While the original dataset contains five bathroom design styles (boho, industrial, minimalist, modern, and scandinavian), we select \textbf{industrial} and \textbf{scandinavian} styles for our experiments. This decision stems from the clear visual contrast between these styles: industrial bathrooms typically feature raw, utilitarian elements with exposed materials and metal fixtures, whereas scandinavian bathrooms are characterized by light, airy spaces with natural materials and neutral colors. The pronounced stylistic difference facilitates more discernible style transfer effects and simplifies evaluation.
 
-While the original dataset contained five bathroom design styles (boho, industrial, minimalist, modern, and scandinavian), we chose to work with \textbf{industrial} and \textbf{scandinavian} styles. This decision was based on the clear visual contrast between these styles—industrial bathrooms typically feature raw, utilitarian elements with exposed materials and metal fixtures, while scandinavian bathrooms are characterized by light, airy spaces with natural materials and neutral colors. We reasoned that this strong stylistic difference would make the style transfer effects more pronounced and easier to evaluate.\\
-
-For training our model, we split each style category into train (70\%), validation (15\%), and test (15\%) sets. This resulted in approximately 105 industrial and 79 scandinavian bathroom images for training, with proportional numbers for validation and testing.
+For training our model, we split each style category into train (70\%), validation (15\%), and test (15\%) sets, which provides approximately 105 industrial and 79 scandinavian bathroom images for training, with proportional allocations for validation and testing.
 
 \subsection{Model Architecture}
 
@@ -102,41 +88,33 @@ Our architecture is based on CycleGAN \cite{zhu2017unpaired} with several enhanc
 
 \subsubsection{Generator Architecture}
 
-Our generator network uses a ResNet-based architecture tailored for interior design style transfer:
+Our generator network uses a ResNet-based architecture adapted for interior design style transfer:
 
 \begin{itemize}
-    \item Initial reflection padding and 7×7 convolution to preserve edge information, which is critical for maintaining bathroom structural elements
+    \item Initial reflection padding and 7×7 convolution to preserve edge information, important for maintaining bathroom structural elements
     \item Two downsampling layers with stride-2 convolutions and instance normalization
     \item Nine residual blocks for feature transformation while maintaining spatial information
     \item Bilinear interpolation upsampling followed by 3×3 convolutions to reduce checkerboard artifacts (edge distortions caused by convolutional operations at image boundaries) common in transpose convolutions
     \item Final reflection padding and 7×7 convolution with Tanh activation
 \end{itemize}
 
-The dual generator structure allows us to create both Industrial→Scandinavian (G$_A$) and Scandinavian→Industrial (G$_B$) transformations. This bidirectionality enables cycle consistency training without requiring paired images.
+The dual generator structure creates both Industrial→Scandinavian (G$_A$) and Scandinavian→Industrial (G$_B$) mappings. This bidirectional approach supports cycle consistency training with unpaired images.
 
 \subsubsection{Multi-scale Discriminator}
 
-To better capture both global structure and local details, we implemented a multi-scale discriminator that operates at two resolutions:
-
-\begin{itemize}
-    \item Full-resolution discriminator for capturing overall image coherence and stylistic patterns
-    \item Half-resolution discriminator for focusing on larger-scale features (like layout and fixtures)
-    \item Each discriminator uses a PatchGAN architecture with spectral \cite{miyato2018spectral} normalization for training stability
-\end{itemize}
-
-This multi-scale approach helps the model better distinguish between industrial and scandinavian styles while maintaining structural coherence. For example, the full-resolution discriminator might focus on detailed textures like tile patterns or fixture finishes, while the half-resolution discriminator captures more general properties like color schemes and spatial arrangements.
+To better capture both global structure and local details, our implementation incorporates a multi-scale discriminator operating at two distinct resolutions. The architecture consists of a full-resolution discriminator that processes the complete image to capture overall coherence and stylistic patterns, alongside a half-resolution discriminator that focuses on larger-scale features such as layout and fixtures. Both discriminators employ a PatchGAN architecture with spectral normalization \cite{miyato2018spectral} to enhance training stability. This dual-resolution approach enables the model to distinguish between industrial and scandinavian styles while maintaining structural coherence across scales. In practice, the full-resolution discriminator tends to respond to detailed textures such as tile patterns and fixture finishes, while the half-resolution counterpart responds more strongly to broader properties including color schemes and spatial arrangements.
 
 \subsubsection{Perceptual Network}
 
-For our structural preservation loss, we incorporated a perceptual network based on pre-trained VGG19 features. This network extracts features at three different depths, allowing us to capture different levels of structural information:
+For our structural preservation loss, we incorporate a perceptual network based on pre-trained VGG19 features. This network extracts features at three complementary depths, allowing us to capture different levels of structural information:
 
 \begin{itemize}
-    \item Low-level features (edges, textures) from early layers, which help preserve basic elements like walls and fixtures
-    \item Mid-level features (patterns, local structures) from middle layers, capturing bathroom fixtures and their arrangement
-    \item High-level features (spatial arrangements) from deeper layers, representing overall bathroom layout
+    \item Low-level features (edges, textures) from early layers, which preserve fundamental structural elements such as walls and fixtures
+    \item Mid-level features (patterns, local structures) from intermediate layers, representing bathroom fixtures and their spatial relationships
+    \item High-level features (spatial arrangements) from deeper layers, encoding the overall bathroom configuration
 \end{itemize}
 
-By weighting these feature levels differently in our loss function (with higher weight on low and mid-level features), we encourage the model to preserve structural elements while still allowing stylistic changes appropriate for the target domain. This is especially important for bathroom style transfer, where we want to maintain the layout and fixtures while changing decorative elements to match either industrial or scandinavian design aesthetics.
+By weighting these feature levels differently in our loss function (with higher weight on low and mid-level features), we encourage the model to preserve structural elements while still allowing stylistic changes appropriate for the target domain. This approach is particularly suitable for bathroom style transfer, where maintaining the layout and fixtures while transforming decorative elements to match either industrial or scandinavian design aesthetics is the desired outcome.
 
 \subsection{Loss Functions}
 Our training objective combines several loss terms:
@@ -266,15 +244,12 @@ Finally, the identity mapping losses (Figures~\ref{fig:identity_loss_A} and \ref
 
 We evaluated our model using two complementary metrics:
 
-\begin{itemize}
-    \item \textbf{LPIPS} (Learned Perceptual Image Patch Similarity): This perceptual metric measures similarity between images based on features extracted from pre-trained networks. We used LPIPS to evaluate two aspects:
+\paragraph{LPIPS} (Learned Perceptual Image Patch Similarity): This perceptual metric measures similarity between images based on features extracted from pre-trained networks. We used LPIPS to evaluate two aspects:
     \begin{itemize}
         \item Cycle consistency: How well the original image is reconstructed after a full translation cycle (A→B→A)
         \item Structural preservation: How well architectural elements are maintained when comparing original and style-transferred images
     \end{itemize}
-    
-    \item \textbf{FID} (Fréchet Inception Distance): This metric measures the distance between feature distributions of real and generated images using the Inception-v3 network. Lower FID scores indicate generated images more similar to real ones, providing an assessment of overall generation quality and style transfer effectiveness.
-\end{itemize}
+\paragraph{FID} (Fréchet Inception Distance): This metric measures the distance between feature distributions of real and generated images using the Inception-v3 network. Lower FID scores indicate generated images more similar to real ones, providing an assessment of overall generation quality and style transfer effectiveness.
 
 These quantitative metrics, combined with qualitative visual assessment, allowed us to evaluate the performance of our bathroom style transfer system.
 
@@ -407,56 +382,19 @@ The high FID scores (average of 192.78) indicate a significant distribution gap 
 
 \subsection{Insufficient Feature Engineering}
 
-One shortcoming of our implementation is the minimal feature engineering. While we adopted Fu's enhanced CycleGAN architecture, we did not develop domain-specific features tailored to interior design. For example:
-
-\begin{itemize}
-    \item No semantic segmentation to distinguish between different bathroom elements (walls, fixtures, floor, etc.)
-    \item Lack of material-specific transformations that could better capture design style differences
-    \item No specialized attention mechanisms to focus on style-defining elements
-    \item Absence of design-specific perceptual features for more meaningful loss functions
-\end{itemize}
-
-These limitations restrict the model's ability to make targeted, design-relevant transformations, instead producing more general stylistic changes.
+One shortcoming of our implementation is the minimal feature engineering. While we adopted Fu's enhanced CycleGAN architecture, we did not develop domain-specific features tailored to interior design. Our approach lacks semantic segmentation to distinguish between different bathroom elements such as walls, fixtures, floors, and decorative components. Additionally, we did not implement material-specific transformations that could better capture design style differences between industrial and scandinavian aesthetics. The model also operates without specialized attention mechanisms to focus on style-defining elements, which prevents targeting transformations to the most stylistically relevant regions. Furthermore, the absence of design-specific perceptual features for more meaningful loss functions limits our ability to guide the transformation process with domain knowledge. These architectural limitations collectively restrict the model's ability to make targeted, design-relevant transformations, instead producing more general stylistic changes that primarily affect color schemes and textures rather than substantive design elements.
 
 \subsection{Structural Preservation vs. Design Transformation}
 
-Perhaps the most significant limitation lies in our adherence to structural preservation. While Fu's approach made sense for artwork where preserving the composition was essential, interior design transformation often requires changes to furniture and fixtures. Our strong structural preservation loss forces the model to maintain all architectural elements, preventing it from:
-
-\begin{itemize}
-    \item Replacing industrial metal fixtures with wooden Scandinavian alternatives
-    \item Transforming bathtub designs between styles
-    \item Changing sink shapes and materials in a style-appropriate manner
-    \item Modifying lighting fixtures which are key style indicators
-\end{itemize}
-
-This reveals a fundamental tension in our approach: successful interior style transfer often requires structural changes, yet our model explicitly penalizes such modifications. This constraint significantly limits the practical utility of the system for design visualization.
+Perhaps the most significant limitation lies in our adherence to structural preservation. While Fu's approach made sense for artwork where preserving the composition was essential, interior design transformation often requires changes to furniture and fixtures. Our structural preservation loss forces the model to maintain all architectural elements, creating a contradiction in the task itself. The model cannot replace industrial metal fixtures with wooden Scandinavian alternatives, transform bathtub designs between styles, change sink shapes and materials in a style-appropriate manner, or modify lighting fixtures which are key style indicators. This reveals an important tension in our approach: successful interior style transfer often requires structural changes, yet our model explicitly penalizes such modifications. The resulting constraint significantly limits the practical utility of the system for design visualization, as users seeking to visualize different design styles typically expect to see appropriate fixture and furniture changes in addition to surface-level aesthetic modifications.
 
 \subsection{CycleGAN Limitations for Design Applications}
 
-Our results suggest that CycleGAN, even with enhancements, may not be the optimal architecture for sophisticated interior design transformations. The inherent limitations include:
-
-\begin{itemize}
-    \item Inability to generate new elements not present in the original image
-    \item Limited capacity to understand the semantic meaning of different room components
-    \item Tendency to produce artifacts in complex regions with many geometric details
-\end{itemize}
-
-These architectural limitations are evident in our results, where style transfer is largely limited to color shifts and texture changes rather than meaningful design transformations.
+Our results suggest that CycleGAN, even with enhancements, may not be the optimal architecture for sophisticated interior design transformations. The framework exhibits inherent limitations that constrain its effectiveness in this domain. CycleGAN demonstrates an inability to generate new elements not present in the original image, preventing the addition of style-specific fixtures or decorative elements. It also displays limited capacity to understand the semantic meaning of different room components, treating all pixels similarly rather than recognizing functional elements like sinks, showers, or storage. Additionally, the architecture shows a tendency to produce artifacts in complex regions with many geometric details, particularly problematic in bathrooms with intricate tile patterns or fixtures. These architectural limitations are evident in our results, where style transfer is largely limited to color shifts and texture changes rather than meaningful design transformations that would authentically represent different interior design paradigms.
 
 \subsection{Alternative Approaches}
 
-The limitations identified suggest that newer generative models, particularly diffusion models, might be better suited for interior design style transfer. Recent text-to-image and image-to-image diffusion models such as Stable Diffusion have shown superior capabilities in:
-
-\begin{itemize}
-    \item Understanding semantic content of scenes
-    \item Generating new objects and elements while maintaining context
-    \item Producing high-fidelity transformations guided by text prompts
-    \item Preserving important elements while allowing for targeted modifications
-\end{itemize}
-
-A diffusion-based approach would potentially allow for both preservation of room structure and transformation of specific design elements through controlled generation. This could enable more meaningful style transfers that actually replace industrial fixtures with Scandinavian ones, rather than merely adjusting their appearance. \\
-
-Furthermore, we could also address the fundamental limitation of our current system, which applies the same transformation logic to all bathroom elements regardless of their design significance.
+The limitations identified suggest that newer generative models, particularly diffusion models, might be better suited for interior design style transfer. Recent text-to-image and image-to-image diffusion models such as Stable Diffusion have demonstrated superior capabilities in several aspects critical to design visualization. These models excel at understanding semantic content of scenes, allowing them to identify and appropriately transform specific design elements while preserving overall spatial relationships. They can generate new objects and elements while maintaining contextual coherence, enabling the introduction of style-specific fixtures and furnishings. Furthermore, diffusion models are capable of producing high-fidelity transformations guided by text prompts, which allows for more intuitive control over the desired style characteristics. Importantly, they show proficiency in preserving important elements while allowing for targeted modifications, addressing the key tension between preservation and transformation. A diffusion-based approach would potentially allow for both preservation of room structure and transformation of specific design elements through controlled generation. This could enable more meaningful style transfers that actually replace industrial fixtures with Scandinavian ones, rather than merely adjusting their appearance. Furthermore, we could also address the fundamental limitation of our current system, which applies the same transformation logic to all bathroom elements regardless of their design significance.
 
 \section{Conclusion and Future Work}
 
