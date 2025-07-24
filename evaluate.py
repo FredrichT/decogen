@@ -286,9 +286,7 @@ def evaluate_model(model_path, epoch, output_dir='evaluation_results'):
     # Initialize model
     model = CycleGAN(
         device=DEVICE,
-        lambda_cycle=LAMBDA_CYCLE,
-        lambda_identity=LAMBDA_IDENTITY,
-        lambda_structure=LAMBDA_STRUCTURE
+        lambda_cycle=LAMBDA_CYCLE
     )
     
     # Load model weights

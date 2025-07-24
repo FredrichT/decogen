@@ -1,11 +1,11 @@
 """
-Configuration parameters for the Bathroom Interior Design Style Transfer project.
+Configuration parameters for the Living Room Interior Design Style Transfer project.
 """
 import os
 import torch
 
 # Dataset configuration
-DATASET_PATH = "dataset/bathroom"  # Updated to point to the bathroom dataset at project root
+DATASET_PATH = "dataset"  # Updated to point to the dataset at project root
 DATA_DIR = "data"
 CYCLEGAN_DATA_DIR = os.path.join(DATA_DIR, "cyclegan_data")
 
@@ -19,8 +19,6 @@ BETA1 = 0.5
 BETA2 = 0.999
 NUM_EPOCHS = 100
 LAMBDA_CYCLE = 10.0
-LAMBDA_IDENTITY = 0.5
-LAMBDA_STRUCTURE = 10.0  # Weight for structural preservation loss
 
 # Training configuration
 SAVE_MODEL_EVERY = 10  # Save model every n epochs
@@ -28,13 +26,13 @@ SAVE_IMAGE_EVERY = 5   # Save sample images every n epochs
 CHECKPOINT_DIR = "checkpoints"
 SAMPLE_DIR = "samples"
 
-# Available bathroom styles
-STYLES = ["boho", "industrial", "minimalist", "modern", "scandinavian"]
+# Available living room styles
+STYLES = ["coastal", "eclectic"]
 
 # Default source and target styles for transfer
-DEFAULT_SOURCE_STYLE = "industrial"
-DEFAULT_TARGET_STYLE = "scandinavian"
+DEFAULT_SOURCE_STYLE = "coastal"
+DEFAULT_TARGET_STYLE = "eclectic"
 
 # Weights and Biases configuration
-WANDB_PROJECT = "bathroom-design-style-transfer"
+WANDB_PROJECT = "living-room-design-style-transfer"
 WANDB_ENTITY = None  # Change to your wandb username if needed

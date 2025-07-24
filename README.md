@@ -1,11 +1,11 @@
-# Bathroom Interior Design Style Transfer
+# Living Room Interior Design Style Transfer
 
-This project implements a bathroom interior design style transfer system using a CycleGAN architecture optimized based on the research paper by Fu (2022). The system can transform bathrooms from one design style to another while preserving structural elements.
+This project implements a living room interior design style transfer system using CycleGAN architecture. The system can transform living rooms between different design styles while preserving structural elements.
 
 ## Features
 
-- Style transfer between different bathroom design styles (modern, minimalist, industrial, boho, and scandinavian)
-- Preservation of structural elements (walls, fixtures, architectural features)
+- Style transfer between Coastal and Eclectic living room design styles
+- Preservation of structural elements (walls, furniture placement, architectural features)
 - Computationally efficient implementation with support for Apple M1/M2 (MPS)
 - Weights & Biases integration for experiment tracking
 - Evaluation metrics for style transfer quality (LPIPS, FID)
@@ -22,13 +22,9 @@ decogen/
 ├── requirements.txt           # Python dependencies
 ├── train.py                   # Training script
 ├── utils.py                   # Utility functions
-├── dataset/                   # Raw bathroom images dataset
-│   └── bathroom/              # Contains subdirectories for each style
-│       ├── boho/
-│       ├── industrial/
-│       ├── minimalist/
-│       ├── modern/
-│       └── scandinavian/
+├── dataset/                   # Raw living room images dataset
+│   ├── coastal/               # Coastal style living room images (1,049 images)
+│   └── eclectic/              # Eclectic style living room images (1,020 images)
 └── models/                    # Model implementations
     ├── __init__.py
     ├── cycle_gan.py           # CycleGAN model implementation
@@ -72,49 +68,38 @@ decogen/
 
 ## Dataset
 
-This project uses a curated subset of bathroom interior design images originally sourced from the "Interior Design Images and Metadata Dataset from Pinterest" (available on Kaggle as "galinakg/interior-design-images-and-metadata").
+This project uses the MMIS (Multimodal Dataset for Interior Scene Visual Generation and Recognition) dataset, specifically focusing on living room images from two distinct design styles.
 
-### Dataset Modifications
+### MMIS Dataset Overview
 
-The original dataset contained multiple room types (bathroom, bedroom, kitchen, living_room) with various design styles, along with CSV metadata files. For this implementation:
+The MMIS dataset is a comprehensive multimodal dataset containing nearly 160,000 interior scene images with corresponding textual descriptions and audio recordings. Each image captures various interior spaces with different styles, layouts, and furnishings.
 
-- We focused exclusively on bathroom images for better model specialization
-- The dataset was cleaned to remove:
-  - Images containing text/writing
-  - Images showing only colors or palettes
-  - Images with single objects rather than entire rooms
-- CSV metadata files were removed to work directly with image files
-- The cleaned images were organized into style-specific directories following the structure outlined in the README
+For this project, we utilize:
+- **Coastal style living rooms**: 1,049 images featuring bright, blue-toned interiors with beach-inspired elements
+- **Eclectic style living rooms**: 1,020 images showcasing vibrant, colorful spaces with diverse design influences
 
 ### Design Styles
 
-Each bathroom image is categorized into one of five interior design styles:
-
-- **Boho**: Bohemian style featuring eclectic, global influences with casual and layered aesthetics
-- **Industrial**: Raw, utilitarian style with exposed materials, metal fixtures, and minimally finished surfaces
-- **Minimalist**: Clean, uncluttered spaces with simple color palettes and essential fixtures
-- **Modern**: Contemporary designs with clean lines, updated materials, and functional aesthetics
-- **Scandinavian**: Light, airy spaces with natural materials, neutral colors, and functional simplicity
+- **Coastal**: Bright, airy living rooms with blue color palettes, natural materials, and beach-inspired décor elements
+- **Eclectic**: Vibrant, colorful living rooms combining diverse design elements, patterns, and furnishings from various styles
 
 ### Dataset Structure
 
-The dataset is organized as follows:
-
 ```
-dataset/bathroom/
-├── boho/           # Boho style bathroom images
-├── industrial/     # Industrial style bathroom images
-├── minimalist/     # Minimalist style bathroom images
-├── modern/         # Modern style bathroom images
-└── scandinavian/   # Scandinavian style bathroom images
+dataset/
+├── coastal/        # Coastal style living room images (1,049 images)
+└── eclectic/       # Eclectic style living room images (1,020 images)
 ```
-
-Each image should be a clean, high-quality photograph of a bathroom interior in the corresponding style.
 
 ### Citation
 
-When using this dataset approach in your research or projects, please cite the original dataset:
-"Interior Design Images and Metadata Dataset from Pinterest" (Kaggle: galinakg/interior-design-images-and-metadata)
+When using this dataset in your research, please cite:
+
+**MMIS: Multimodal Dataset for Interior Scene Visual Generation and Recognition**
+- Authors: Hozaifa Kassab, Ahmed Mahmoud, Mohamed Bahaa, Ammar Mohamed, Ali Hamdi
+- arXiv:2407.05980 [cs.CV]
+- DOI: https://doi.org/10.48550/arXiv.2407.05980
+- Dataset: https://drive.google.com/drive/folders/1FO_sNVZi757I_QBdwibPX--14O24ff0m
 
 ## Usage
 
@@ -131,15 +116,15 @@ python main.py train
 Customize training parameters:
 
 ```bash
-python main.py train --batch_size 2 --epochs 100 --source_style modern --target_style minimalist
+python main.py train --batch_size 2 --epochs 100 --source_style coastal --target_style eclectic
 ```
 
 Available options:
 
 - `--batch_size`: Batch size for training (default: 4)
 - `--epochs`: Number of training epochs (default: 100)
-- `--source_style`: Source style for transfer (choices: boho, industrial, minimalist, modern, scandinavian)
-- `--target_style`: Target style for transfer (choices same as source)
+- `--source_style`: Source style for transfer (choices: coastal, eclectic)
+- `--target_style`: Target style for transfer (choices: coastal, eclectic)
 
 ### Evaluation
 
@@ -157,7 +142,7 @@ Options:
 
 ### Inference
 
-Apply style transfer to new bathroom images:
+Apply style transfer to new living room images:
 
 ```bash
 python main.py inference --input path/to/your/image.jpg --output_dir inference_results --direction AtoB
@@ -179,7 +164,7 @@ Options:
 
 ## Model Architecture
 
-The implementation is based on an optimized CycleGAN architecture from Fu (2022) with several improvements:
+The implementation uses CycleGAN architecture with several optimizations:
 
 ### Enhanced Generator
 
@@ -201,13 +186,6 @@ The implementation is based on an optimized CycleGAN architecture from Fu (2022)
 
 Sample results will be saved in the `samples` directory during training. Full evaluation results, including LPIPS and FID scores, will be saved in the `evaluation_results` directory when running the evaluation script.
 
-## Research Paper
+## Implementation
 
-This implementation is based on the research paper:
-
-**Digital Image Art Style Transfer Algorithm Based on CycleGAN**
-
-- Author: Xuhui Fu
-- Published: January 13, 2022
-- DOI: [https://doi.org/10.1155/2022/6075398](https://doi.org/10.1155/2022/6075398)
-- Part of Special Issue: Computational Intelligence in Image and Video Analysis
+This CycleGAN implementation focuses on style transfer between living room interior designs, utilizing the large-scale MMIS dataset for training robust generative models.

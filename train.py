@@ -68,10 +68,6 @@ def train(
             'gan_loss_B': 0.0,
             'cycle_loss_A': 0.0,
             'cycle_loss_B': 0.0,
-            'identity_loss_A': 0.0,
-            'identity_loss_B': 0.0,
-            'struct_loss_A': 0.0,
-            'struct_loss_B': 0.0,
             'd_loss': 0.0,
             'd_loss_A': 0.0,
             'd_loss_B': 0.0,
@@ -240,8 +236,6 @@ def main():
         'num_epochs': NUM_EPOCHS,
         'image_size': IMAGE_SIZE,
         'lambda_cycle': LAMBDA_CYCLE,
-        'lambda_identity': LAMBDA_IDENTITY,
-        'lambda_structure': LAMBDA_STRUCTURE,
         'device': str(DEVICE),
         'source_style': DEFAULT_SOURCE_STYLE,
         'target_style': DEFAULT_TARGET_STYLE,
@@ -293,9 +287,7 @@ def main():
     print("Initializing CycleGAN model...")
     model = CycleGAN(
         device=DEVICE,
-        lambda_cycle=LAMBDA_CYCLE,
-        lambda_identity=LAMBDA_IDENTITY,
-        lambda_structure=LAMBDA_STRUCTURE
+        lambda_cycle=LAMBDA_CYCLE
     )
     
     # Train the model
