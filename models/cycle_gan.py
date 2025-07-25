@@ -6,8 +6,8 @@ import random
 import torch
 import torch.nn as nn
 import itertools
-from .networks import ResnetGenerator, MultiScaleDiscriminator, PerceptualNet, init_weights
-from .losses import GANLoss, CycleLoss, IdentityLoss, StructuralLoss
+from .networks import ResnetGenerator, MultiScaleDiscriminator, init_weights
+from .losses import GANLoss, CycleLoss
 
 
 class CycleGAN(nn.Module):
@@ -18,9 +18,7 @@ class CycleGAN(nn.Module):
     def __init__(
         self,
         device,
-        lambda_cycle=10.0,
-        lambda_identity=0.5,
-        lambda_structure=10.0
+        lambda_cycle=10.0
     ):
         """
         Initialize the CycleGAN model.
@@ -28,14 +26,10 @@ class CycleGAN(nn.Module):
         Parameters:
             device (torch.device) - - device to run the model on
             lambda_cycle (float) - - weight for cycle loss
-            lambda_identity (float) - - weight for identity loss
-            lambda_structure (float) - - weight for structural preservation loss
         """
         super(CycleGAN, self).__init__()
         self.device = device
         self.lambda_cycle = lambda_cycle
-        self.lambda_identity = lambda_identity
-        self.lambda_structure = lambda_structure
         
         # Define generators (A->B and B->A)
         self.netG_A = ResnetGenerator().to(self.device)
@@ -51,14 +45,9 @@ class CycleGAN(nn.Module):
         init_weights(self.netD_A)
         init_weights(self.netD_B)
         
-        # Perceptual network for structural loss
-        self.perceptual_net = PerceptualNet().to(self.device)
-        
         # Define loss functions
         self.criterionGAN = GANLoss().to(self.device)
         self.criterionCycle = CycleLoss(lambda_cycle).to(self.device)
-        self.criterionIdentity = IdentityLoss(lambda_identity).to(self.device)
-        self.criterionStructure = StructuralLoss(self.perceptual_net, lambda_structure).to(self.device)
         
         # Optimizers
         self.optimizer_G = torch.optim.Adam(
@@ -111,19 +100,14 @@ class CycleGAN(nn.Module):
         rec_A = self.netG_B(fake_B)
         # G_A(G_B(B)) = rec_B
         rec_B = self.netG_A(fake_A)
-        # Identity mapping: G_A(B) = id_B, G_B(A) = id_A
-        id_A = self.netG_B(real_A)
-        id_B = self.netG_A(real_B)
         
         return {
             'real_A': real_A,
             'fake_B': fake_B,
             'rec_A': rec_A,
-            'id_A': id_A,
             'real_B': real_B,
             'fake_A': fake_A,
-            'rec_B': rec_B,
-            'id_B': id_B
+            'rec_B': rec_B
         }
     
     def optimize_parameters(self, real_A, real_B):
@@ -148,10 +132,6 @@ class CycleGAN(nn.Module):
         # G_B should generate realistic images in domain A
         disc_fake_A = self.netD_A(fake_A)
         
-        # Identity mapping
-        id_A = self.netG_B(real_A)
-        id_B = self.netG_A(real_B)
-        
         # Cycle consistency
         rec_A = self.netG_B(fake_B)
         rec_B = self.netG_A(fake_A)
@@ -171,16 +151,8 @@ class CycleGAN(nn.Module):
         cycle_losses = self.criterionCycle(real_A, rec_A, real_B, rec_B)
         cycle_loss = cycle_losses['total_cycle_loss']
         
-        # Identity loss
-        identity_losses = self.criterionIdentity(real_A, id_A, real_B, id_B)
-        identity_loss = identity_losses['total_id_loss']
-        
-        # Structural preservation loss
-        struct_losses = self.criterionStructure(real_A, fake_B, real_B, fake_A)
-        struct_loss = struct_losses['total_struct_loss']
-        
         # Combined loss for generators
-        g_loss = gan_loss + cycle_loss + identity_loss + struct_loss
+        g_loss = gan_loss + cycle_loss
         
         # Calculate gradients for G_A and G_B
         g_loss.backward()
@@ -227,10 +199,6 @@ class CycleGAN(nn.Module):
             'gan_loss_B': gan_loss_B.item(),
             'cycle_loss_A': cycle_losses['cycle_loss_A'].item(),
             'cycle_loss_B': cycle_losses['cycle_loss_B'].item(),
-            'identity_loss_A': identity_losses['id_loss_A'].item(),
-            'identity_loss_B': identity_losses['id_loss_B'].item(),
-            'struct_loss_A': struct_losses['struct_loss_A'].item(),
-            'struct_loss_B': struct_losses['struct_loss_B'].item(),
             
             # Discriminator losses
             'd_loss': d_loss.item(),

@@ -28,9 +28,7 @@ def load_model(checkpoint_dir, epoch, device):
     """
     model = CycleGAN(
         device=device,
-        lambda_cycle=LAMBDA_CYCLE,
-        lambda_identity=LAMBDA_IDENTITY,
-        lambda_structure=LAMBDA_STRUCTURE
+        lambda_cycle=LAMBDA_CYCLE
     )
     
     model.load_networks(epoch, checkpoint_dir)
