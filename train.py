@@ -232,7 +232,8 @@ def main():
     # Log config to wandb
     wandb.config.update({
         'batch_size': BATCH_SIZE,
-        'learning_rate': LEARNING_RATE,
+        'learning_rate_g': LEARNING_RATE_G,
+        'learning_rate_d': LEARNING_RATE_D,
         'num_epochs': NUM_EPOCHS,
         'image_size': IMAGE_SIZE,
         'lambda_cycle': LAMBDA_CYCLE,
