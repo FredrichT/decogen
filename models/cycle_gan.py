@@ -8,6 +8,9 @@ import torch.nn as nn
 import itertools
 from .networks import ResnetGenerator, MultiScaleDiscriminator, init_weights
 from .losses import GANLoss, CycleLoss
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import LEARNING_RATE_G, LEARNING_RATE_D, BETA1, BETA2, LAMBDA_CYCLE, NUM_EPOCHS
 
 
 class CycleGAN(nn.Module):
@@ -18,18 +21,18 @@ class CycleGAN(nn.Module):
     def __init__(
         self,
         device,
-        lambda_cycle=10.0
+        lambda_cycle=None
     ):
         """
         Initialize the CycleGAN model.
         
         Parameters:
             device (torch.device) - - device to run the model on
-            lambda_cycle (float) - - weight for cycle loss
+            lambda_cycle (float) - - weight for cycle loss (optional, uses config if None)
         """
         super(CycleGAN, self).__init__()
         self.device = device
-        self.lambda_cycle = lambda_cycle
+        self.lambda_cycle = lambda_cycle if lambda_cycle is not None else LAMBDA_CYCLE
         
         # Define generators (A->B and B->A)
         self.netG_A = ResnetGenerator().to(self.device)
@@ -52,21 +55,23 @@ class CycleGAN(nn.Module):
         # Optimizers
         self.optimizer_G = torch.optim.Adam(
             itertools.chain(self.netG_A.parameters(), self.netG_B.parameters()),
-            lr=0.0002,
-            betas=(0.5, 0.999)
+            lr=LEARNING_RATE_G,
+            betas=(BETA1, BETA2)
         )
         self.optimizer_D = torch.optim.Adam(
             itertools.chain(self.netD_A.parameters(), self.netD_B.parameters()),
-            lr=0.0002,
-            betas=(0.5, 0.999)
+            lr=LEARNING_RATE_D,
+            betas=(BETA1, BETA2)
         )
         
         # Learning rate schedulers
-        self.scheduler_G = torch.optim.lr_scheduler.StepLR(
-            self.optimizer_G, step_size=30, gamma=0.5
+        # Generator: Warm restarts for periodic boosts to compete with discriminator
+        self.scheduler_G = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
+            self.optimizer_G, T_0=50, T_mult=2, eta_min=0.00002
         )
-        self.scheduler_D = torch.optim.lr_scheduler.StepLR(
-            self.optimizer_D, step_size=30, gamma=0.5
+        # Discriminator: Steady decay to prevent over-training
+        self.scheduler_D = torch.optim.lr_scheduler.CosineAnnealingLR(
+            self.optimizer_D, T_max=NUM_EPOCHS, eta_min=0.00001
         )
         
         # Image buffer to reduce model oscillation

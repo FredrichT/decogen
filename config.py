@@ -14,7 +14,11 @@ DEVICE = torch.device("mps" if torch.backends.mps.is_available() else
                      ("cuda" if torch.cuda.is_available() else "cpu"))
 BATCH_SIZE = 8
 IMAGE_SIZE = 256
-LEARNING_RATE = 0.0002
+
+# Separate learning rates for G and D
+LEARNING_RATE_G = 0.0002 # Generator learning rate
+LEARNING_RATE_D = 0.0001  # Discriminator learning rate (lower)
+
 BETA1 = 0.5
 BETA2 = 0.999
 NUM_EPOCHS = 500
