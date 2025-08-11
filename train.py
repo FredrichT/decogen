@@ -202,7 +202,8 @@ def train(
                 # Log metrics and images
                 wandb.log({
                     'epoch': epoch,
-                    'learning_rate': model.optimizer_G.param_groups[0]['lr'],
+                    'learning_rate_g': model.optimizer_G.param_groups[0]['lr'],
+                    'learning_rate_d': model.optimizer_D.param_groups[0]['lr'],
                     **epoch_losses,
                     **wandb_images
                 })
