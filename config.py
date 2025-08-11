@@ -12,12 +12,12 @@ CYCLEGAN_DATA_DIR = os.path.join(DATA_DIR, "cyclegan_data")
 # Model configuration
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else 
                      ("cuda" if torch.cuda.is_available() else "cpu"))
-BATCH_SIZE = 4
+BATCH_SIZE = 8
 IMAGE_SIZE = 256
 LEARNING_RATE = 0.0002
 BETA1 = 0.5
 BETA2 = 0.999
-NUM_EPOCHS = 100
+NUM_EPOCHS = 500
 LAMBDA_CYCLE = 10.0
 
 # Training configuration

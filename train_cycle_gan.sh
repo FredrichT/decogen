@@ -25,13 +25,13 @@ conda activate decogen || echo "Échec de l'activation de l'environnement conda 
 mkdir -p output/checkpoints output/samples
 
 # Configuration de wandb (décommentez et configurez si nécessaire)
-# export WANDB_API_KEY="votre_clé_api"
+export WANDB_API_KEY="0f4dc79c5d1eb41cdee40f5ecdb0798941222827"
 # export WANDB_ENTITY="votre_nom_utilisateur"
-# export WANDB_PROJECT="decogen"
+export WANDB_PROJECT="decogen"
 
 # Lancer l'entraînement
 echo "Démarrage de l'entraînement..."
-python main.py train --batch_size 2 --epochs 100
+python main.py train --batch_size 8 --epochs 500
 
 # Afficher la date de fin
 echo "Date de fin: $(date)"
