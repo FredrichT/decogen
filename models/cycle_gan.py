@@ -10,7 +10,7 @@ from .networks import ResnetGenerator, MultiScaleDiscriminator, init_weights
 from .losses import GANLoss, CycleLoss
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import LEARNING_RATE_G, LEARNING_RATE_D, BETA1, BETA2, LAMBDA_CYCLE, NUM_EPOCHS
+from config import LEARNING_RATE_G, LEARNING_RATE_D, BETA1, BETA2, LAMBDA_CYCLE, NUM_EPOCHS, DISCRIMINATOR_DROPOUT
 
 
 class CycleGAN(nn.Module):
@@ -39,8 +39,8 @@ class CycleGAN(nn.Module):
         self.netG_B = ResnetGenerator().to(self.device)
         
         # Define discriminators (for A and B)
-        self.netD_A = MultiScaleDiscriminator().to(self.device)
-        self.netD_B = MultiScaleDiscriminator().to(self.device)
+        self.netD_A = MultiScaleDiscriminator(dropout_rate=DISCRIMINATOR_DROPOUT).to(self.device)
+        self.netD_B = MultiScaleDiscriminator(dropout_rate=DISCRIMINATOR_DROPOUT).to(self.device)
         
         # Initialize networks
         init_weights(self.netG_A)
@@ -65,9 +65,11 @@ class CycleGAN(nn.Module):
         )
         
         # Learning rate schedulers
-        # Generator: Warm restarts for periodic boosts to compete with discriminator
+        # Generator: Warm restarts with adaptive schedule based on NUM_EPOCHS
+        # T_0 = NUM_EPOCHS // 5 ensures restarts at 20%, 60% and final convergence in last 40%
+        T_0 = max(NUM_EPOCHS // 5, 10)  # Minimum T_0 of 10 for short training runs
         self.scheduler_G = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
-            self.optimizer_G, T_0=50, T_mult=2, eta_min=0.00002
+            self.optimizer_G, T_0=T_0, T_mult=2, eta_min=0.00002
         )
         # Discriminator: Steady decay to prevent over-training
         self.scheduler_D = torch.optim.lr_scheduler.CosineAnnealingLR(

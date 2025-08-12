@@ -24,6 +24,9 @@ BETA2 = 0.999
 NUM_EPOCHS = 500
 LAMBDA_CYCLE = 10.0
 
+# Discriminator regularization
+DISCRIMINATOR_DROPOUT = 0.2  # Dropout rate for discriminator to prevent overfitting
+
 # Training configuration
 SAVE_MODEL_EVERY = 10  # Save model every n epochs
 SAVE_IMAGE_EVERY = 5   # Save sample images every n epochs

@@ -138,17 +138,17 @@ class ResnetGenerator(nn.Module):
 # Multi-scale discriminator from Fu (2022)
 class MultiScaleDiscriminator(nn.Module):
     """Multi-scale discriminator that evaluates at different resolutions"""
-    def __init__(self, input_nc=3, ndf=64, n_layers=3, use_spectral_norm=True):
+    def __init__(self, input_nc=3, ndf=64, n_layers=3, use_spectral_norm=True, dropout_rate=0.0):
         super(MultiScaleDiscriminator, self).__init__()
         
         # Regular discriminator at full resolution
         self.discriminator_full = NLayerDiscriminator(
-            input_nc, ndf, n_layers, use_spectral_norm=use_spectral_norm
+            input_nc, ndf, n_layers, use_spectral_norm=use_spectral_norm, dropout_rate=dropout_rate
         )
         
         # Discriminator at half resolution
         self.discriminator_half = NLayerDiscriminator(
-            input_nc, ndf, n_layers, use_spectral_norm=use_spectral_norm
+            input_nc, ndf, n_layers, use_spectral_norm=use_spectral_norm, dropout_rate=dropout_rate
         )
         
         # Downsample layer for half resolution
@@ -168,14 +168,15 @@ class MultiScaleDiscriminator(nn.Module):
 
 # Patch discriminator with spectral normalization option
 class NLayerDiscriminator(nn.Module):
-    """PatchGAN discriminator with spectral normalization option"""
+    """PatchGAN discriminator with spectral normalization and dropout options"""
     def __init__(
         self, 
         input_nc=3, 
         ndf=64, 
         n_layers=3, 
         use_spectral_norm=True,
-        use_sigmoid=False
+        use_sigmoid=False,
+        dropout_rate=0.0
     ):
         super(NLayerDiscriminator, self).__init__()
         
@@ -219,6 +220,10 @@ class NLayerDiscriminator(nn.Module):
                     norm_layer(ndf * nf_mult),
                     nn.LeakyReLU(0.2, True)
                 ]
+            
+            # Add dropout after LeakyReLU in middle layers
+            if dropout_rate > 0.0:
+                sequence += [nn.Dropout2d(dropout_rate)]
         
         # Last layer without downsampling
         nf_mult_prev = nf_mult
