@@ -37,8 +37,8 @@ def compute_lpips(model, dataloader_A, dataloader_B, lpips_model, device):
     lpips_scores = {
         'cycle_consistency_A': 0.0,  # real_A vs rec_A
         'cycle_consistency_B': 0.0,  # real_B vs rec_B
-        'structural_A_to_B': 0.0,    # real_A vs fake_B
-        'structural_B_to_A': 0.0,    # real_B vs fake_A
+        'perceptual_A_to_B': 0.0,    # real_A vs fake_B
+        'perceptual_B_to_A': 0.0,    # real_B vs fake_A
     }
     
     # Number of test samples
@@ -59,9 +59,9 @@ def compute_lpips(model, dataloader_A, dataloader_B, lpips_model, device):
             lpips_cycle_A = lpips_model(real_A, rec_A).mean()
             lpips_scores['cycle_consistency_A'] += lpips_cycle_A.item() * real_A.size(0)
             
-            # Compute structural preservation LPIPS
-            lpips_struct_A = lpips_model(real_A, fake_B).mean()
-            lpips_scores['structural_A_to_B'] += lpips_struct_A.item() * real_A.size(0)
+            # Compute perceptual similarity LPIPS
+            lpips_percept_A = lpips_model(real_A, fake_B).mean()
+            lpips_scores['perceptual_A_to_B'] += lpips_percept_A.item() * real_A.size(0)
         
         # Process domain B
         for real_B in tqdm(dataloader_B, desc="Domain B"):
@@ -73,29 +73,29 @@ def compute_lpips(model, dataloader_A, dataloader_B, lpips_model, device):
             lpips_cycle_B = lpips_model(real_B, rec_B).mean()
             lpips_scores['cycle_consistency_B'] += lpips_cycle_B.item() * real_B.size(0)
             
-            # Compute structural preservation LPIPS
-            lpips_struct_B = lpips_model(real_B, fake_A).mean()
-            lpips_scores['structural_B_to_A'] += lpips_struct_B.item() * real_B.size(0)
+            # Compute perceptual similarity LPIPS
+            lpips_percept_B = lpips_model(real_B, fake_A).mean()
+            lpips_scores['perceptual_B_to_A'] += lpips_percept_B.item() * real_B.size(0)
     
     # Compute averages
     lpips_scores['cycle_consistency_A'] /= n_samples_A
-    lpips_scores['structural_A_to_B'] /= n_samples_A
+    lpips_scores['perceptual_A_to_B'] /= n_samples_A
     lpips_scores['cycle_consistency_B'] /= n_samples_B
-    lpips_scores['structural_B_to_A'] /= n_samples_B
+    lpips_scores['perceptual_B_to_A'] /= n_samples_B
     
     # Add average scores
     lpips_scores['avg_cycle_consistency'] = (
         lpips_scores['cycle_consistency_A'] + lpips_scores['cycle_consistency_B']
     ) / 2
     
-    lpips_scores['avg_structural'] = (
-        lpips_scores['structural_A_to_B'] + lpips_scores['structural_B_to_A']
+    lpips_scores['avg_perceptual'] = (
+        lpips_scores['perceptual_A_to_B'] + lpips_scores['perceptual_B_to_A']
     ) / 2
     
     return lpips_scores
 
 
-def generate_test_samples(model, dataloader_A, dataloader_B, device, output_dir, num_samples=5):
+def generate_test_samples(model, dataloader_A, dataloader_B, device, output_dir, num_samples=30):
     """
     Generate and save test samples.
     
@@ -339,9 +339,9 @@ def evaluate_model(model_path, epoch, output_dir='evaluation_results'):
     print(f"Cycle Consistency A: {lpips_scores['cycle_consistency_A']:.4f}")
     print(f"Cycle Consistency B: {lpips_scores['cycle_consistency_B']:.4f}")
     print(f"Average Cycle Consistency: {lpips_scores['avg_cycle_consistency']:.4f}")
-    print(f"Structural A to B: {lpips_scores['structural_A_to_B']:.4f}")
-    print(f"Structural B to A: {lpips_scores['structural_B_to_A']:.4f}")
-    print(f"Average Structural: {lpips_scores['avg_structural']:.4f}")
+    print(f"Perceptual A to B: {lpips_scores['perceptual_A_to_B']:.4f}")
+    print(f"Perceptual B to A: {lpips_scores['perceptual_B_to_A']:.4f}")
+    print(f"Average Perceptual: {lpips_scores['avg_perceptual']:.4f}")
     
     print("\nFID Scores (lower is better):")
     print(f"FID A to B: {fid_scores['fid_A_to_B']:.4f}")
@@ -356,9 +356,9 @@ def evaluate_model(model_path, epoch, output_dir='evaluation_results'):
         f.write(f"Cycle Consistency A: {lpips_scores['cycle_consistency_A']:.4f}\n")
         f.write(f"Cycle Consistency B: {lpips_scores['cycle_consistency_B']:.4f}\n")
         f.write(f"Average Cycle Consistency: {lpips_scores['avg_cycle_consistency']:.4f}\n")
-        f.write(f"Structural A to B: {lpips_scores['structural_A_to_B']:.4f}\n")
-        f.write(f"Structural B to A: {lpips_scores['structural_B_to_A']:.4f}\n")
-        f.write(f"Average Structural: {lpips_scores['avg_structural']:.4f}\n\n")
+        f.write(f"Perceptual A to B: {lpips_scores['perceptual_A_to_B']:.4f}\n")
+        f.write(f"Perceptual B to A: {lpips_scores['perceptual_B_to_A']:.4f}\n")
+        f.write(f"Average Perceptual: {lpips_scores['avg_perceptual']:.4f}\n\n")
         
         f.write("FID Scores (lower is better):\n")
         f.write(f"FID A to B: {fid_scores['fid_A_to_B']:.4f}\n")

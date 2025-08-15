@@ -2,4 +2,11 @@
 /wandb
 *.err
 *.out
-/.history
+
+# Ignore all checkpoints except the final ones (450-500)
+checkpoints/G_A_net_[0-3]*.pth
+checkpoints/G_A_net_40.pth
+checkpoints/G_A_net_4[0-4]*.pth
+checkpoints/G_B_net_[0-3]*.pth
+checkpoints/G_B_net_40.pth
+checkpoints/G_B_net_4[0-4]*.pth

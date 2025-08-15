@@ -12,13 +12,20 @@ CYCLEGAN_DATA_DIR = os.path.join(DATA_DIR, "cyclegan_data")
 # Model configuration
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else 
                      ("cuda" if torch.cuda.is_available() else "cpu"))
-BATCH_SIZE = 4
+BATCH_SIZE = 8
 IMAGE_SIZE = 256
-LEARNING_RATE = 0.0002
+
+# Separate learning rates for G and D
+LEARNING_RATE_G = 0.0002 # Generator learning rate
+LEARNING_RATE_D = 0.0001  # Discriminator learning rate (lower)
+
 BETA1 = 0.5
 BETA2 = 0.999
-NUM_EPOCHS = 100
-LAMBDA_CYCLE = 10.0
+NUM_EPOCHS = 500
+LAMBDA_CYCLE = 5.0
+
+# Discriminator regularization
+DISCRIMINATOR_DROPOUT = 0.2  # Dropout rate for discriminator to prevent overfitting
 
 # Training configuration
 SAVE_MODEL_EVERY = 10  # Save model every n epochs
