@@ -12,8 +12,8 @@ from config import *
 def print_header():
     """Print the project header."""
     print("\n" + "=" * 80)
-    print(" " * 20 + "BATHROOM DESIGN STYLE TRANSFER")
-    print(" " * 15 + "Based on Optimized CycleGAN (Fu, 2022)")
+    print(" " * 20 + "LIVING ROOM DESIGN STYLE TRANSFER")
+    print(" " * 20 + "Using CycleGAN Architecture")
     print("=" * 80 + "\n")
 
 

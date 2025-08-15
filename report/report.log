@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  15 AUG 2025 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  15 AUG 2025 21:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -498,110 +498,104 @@ Underfull \hbox (badness 1348) in paragraph at lines 162--163
  []
 
 [3]
+Underfull \hbox (badness 1371) in paragraph at lines 213--214
+\OT1/cmr/m/n/10 more ef-fec-tively while the dis-crim-i-na-tor's val-i-da-tion
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 213--214
+\OT1/cmr/m/n/10 per-for-mance de-graded. The high val-i-da-tion losses
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
 
-Underfull \hbox (badness 4084) in paragraph at lines 215--216
-\OT1/cmr/m/n/10 im-prove-ment through-out train-ing, de-creas-ing from
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 221--222
+Underfull \hbox (badness 1048) in paragraph at lines 219--220
 \OT1/cmr/m/n/10 neal-ing-Warm-Restarts with clear pe-ri-odic restarts at
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 225--226
-\OT1/cmr/m/n/10 more sta-ble per-for-mance with grad-ual im-prove-ment
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--226
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
 [4]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 2600) in paragraph at lines 278--279
+Underfull \hbox (badness 2600) in paragraph at lines 276--277
 []\OT1/cmr/m/n/10 The LPIPS scores mea-sure per-cep-tual sim-i-lar-ity
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 278--279
-\OT1/cmr/m/n/10 preser-va-tion scores are sim-i-lar, with slightly bet-ter
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
-<assets/real_A.png, id=278, 256.96pt x 256.96pt>
+<assets/real_A.png, id=275, 256.96pt x 256.96pt>
 File: assets/real_A.png Graphic file (type png)
 <use assets/real_A.png>
-Package pdftex.def Info: assets/real_A.png  used on input line 290.
+Package pdftex.def Info: assets/real_A.png  used on input line 288.
 (pdftex.def)             Requested size: 127.5pt x 127.49945pt.
-<assets/fake_B.png, id=279, 256.96pt x 256.96pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<assets/fake_B.png, id=276, 256.96pt x 256.96pt>
 File: assets/fake_B.png Graphic file (type png)
 <use assets/fake_B.png>
-Package pdftex.def Info: assets/fake_B.png  used on input line 298.
+Package pdftex.def Info: assets/fake_B.png  used on input line 296.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/rec_A.png, id=280, 256.96pt x 256.96pt>
+<assets/rec_A.png, id=277, 256.96pt x 256.96pt>
 File: assets/rec_A.png Graphic file (type png)
 <use assets/rec_A.png>
-Package pdftex.def Info: assets/rec_A.png  used on input line 304.
+Package pdftex.def Info: assets/rec_A.png  used on input line 302.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5 <./assets/real_A.png (PNG copy)>]
+[5]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 313.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 311.
 
-<assets/real_B.png, id=291, 256.96pt x 256.96pt>
+<assets/real_B.png, id=289, 256.96pt x 256.96pt>
 File: assets/real_B.png Graphic file (type png)
 <use assets/real_B.png>
-Package pdftex.def Info: assets/real_B.png  used on input line 320.
-(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/fake_A.png, id=292, 256.96pt x 256.96pt>
-File: assets/fake_A.png Graphic file (type png)
-<use assets/fake_A.png>
-Package pdftex.def Info: assets/fake_A.png  used on input line 328.
-(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/rec_B.png, id=293, 256.96pt x 256.96pt>
-File: assets/rec_B.png Graphic file (type png)
-<use assets/rec_B.png>
-Package pdftex.def Info: assets/rec_B.png  used on input line 334.
+Package pdftex.def Info: assets/real_B.png  used on input line 318.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/sample_1.png, id=295, 1136.0844pt x 570.2103pt>
+<assets/fake_A.png, id=290, 256.96pt x 256.96pt>
+File: assets/fake_A.png Graphic file (type png)
+<use assets/fake_A.png>
+Package pdftex.def Info: assets/fake_A.png  used on input line 326.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+<assets/rec_B.png, id=291, 256.96pt x 256.96pt>
+File: assets/rec_B.png Graphic file (type png)
+<use assets/rec_B.png>
+Package pdftex.def Info: assets/rec_B.png  used on input line 332.
+(pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<assets/sample_1.png, id=293, 1136.0844pt x 570.2103pt>
 File: assets/sample_1.png Graphic file (type png)
 <use assets/sample_1.png>
-Package pdftex.def Info: assets/sample_1.png  used on input line 351.
+Package pdftex.def Info: assets/sample_1.png  used on input line 349.
 (pdftex.def)             Requested size: 255.0pt x 127.97855pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 351--352
+Overfull \hbox (9.0pt too wide) in paragraph at lines 349--350
  [][] 
  []
 
+[6 <./assets/real_A.png (PNG copy)> <./assets/fake_B.png (PNG copy)> <./assets/rec_A.png (PNG copy)> <./assets/real_B.png (PNG copy)> <./assets/fake_A.png (PNG copy)> <./assets/rec_B.png (PNG copy)> <./assets/sample_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 1616) in paragraph at lines 360--361
-\OT1/cmr/m/n/10 while trans-form-ing col-ors, pat-terns, and dec-o-ra-tive
  []
 
 
@@ -610,134 +604,149 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--361
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
-
- []
-
-[6 <./assets/fake_B.png (PNG copy)> <./assets/rec_A.png (PNG copy)> <./assets/real_B.png (PNG copy)> <./assets/fake_A.png (PNG copy)> <./assets/rec_B.png (PNG copy)> <./assets/sample_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
 
-Underfull \hbox (badness 4254) in paragraph at lines 396--397
- []\OT1/cmr/m/n/10 Changing pat-terns and tex-tures in a style-
+Underfull \hbox (badness 10000) in paragraph at lines 389--390
+
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 431--432
-[]\OT1/cmr/m/n/10 In this pa-per, we pre-sented a deep learn-ing ap-
+Underfull \hbox (badness 1394) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 for liv-ing room in-te-rior de-sign style trans-fer us-ing
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 431--432
-\OT1/cmr/m/n/10 trans-forms liv-ing room im-ages be-tween coastal and
+Underfull \hbox (badness 1348) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 a Cy-cle-GAN ar-chi-tec-ture. Our sys-tem trans-forms
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 431--432
-\OT1/cmr/m/n/10 bal-ance be-tween style trans-for-ma-tion and con-tent
+Underfull \hbox (badness 2213) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 chang-ing col-ors, pat-terns, and dec-o-ra-tive el-e-ments
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
+Underfull \hbox (badness 3128) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 through ad-ver-sar-ial train-ing and cy-cle con-sis-tency
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 for im-prove-ment, demon-strate that our ar-chi-tec-ture
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 achieves mean-ing-ful style trans-fer. The val-i-da-tion
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 may work ef-fec-tively through longer train-ing pe-ri-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
-<assets/g_loss.png, id=311, 333.245pt x 258.9675pt>
+[8]
+<assets/g_loss.png, id=314, 333.245pt x 258.9675pt>
 File: assets/g_loss.png Graphic file (type png)
 <use assets/g_loss.png>
-Package pdftex.def Info: assets/g_loss.png  used on input line 447.
+Package pdftex.def Info: assets/g_loss.png  used on input line 439.
 (pdftex.def)             Requested size: 229.49844pt x 178.34792pt.
-<assets/d_loss.png, id=312, 335.2525pt x 258.9675pt>
+<assets/d_loss.png, id=315, 335.2525pt x 258.9675pt>
 File: assets/d_loss.png Graphic file (type png)
 <use assets/d_loss.png>
-Package pdftex.def Info: assets/d_loss.png  used on input line 454.
+Package pdftex.def Info: assets/d_loss.png  used on input line 446.
 (pdftex.def)             Requested size: 229.49844pt x 177.27705pt.
-<assets/val_g_loss.png, id=313, 334.24875pt x 255.95625pt>
+<assets/val_g_loss.png, id=316, 334.24875pt x 255.95625pt>
 File: assets/val_g_loss.png Graphic file (type png)
 <use assets/val_g_loss.png>
-Package pdftex.def Info: assets/val_g_loss.png  used on input line 461.
+Package pdftex.def Info: assets/val_g_loss.png  used on input line 453.
 (pdftex.def)             Requested size: 229.49844pt x 175.74686pt.
-[8 <./assets/g_loss.png> <./assets/d_loss.png>]
-<assets/val_d_loss.png, id=321, 331.2375pt x 252.945pt>
+<assets/val_d_loss.png, id=317, 331.2375pt x 252.945pt>
 File: assets/val_d_loss.png Graphic file (type png)
 <use assets/val_d_loss.png>
-Package pdftex.def Info: assets/val_d_loss.png  used on input line 468.
+Package pdftex.def Info: assets/val_d_loss.png  used on input line 460.
 (pdftex.def)             Requested size: 229.49844pt x 175.25398pt.
-<assets/lr_g.png, id=322, 325.215pt x 259.97125pt>
+<assets/lr_g.png, id=318, 325.215pt x 259.97125pt>
 File: assets/lr_g.png Graphic file (type png)
 <use assets/lr_g.png>
-Package pdftex.def Info: assets/lr_g.png  used on input line 477.
+Package pdftex.def Info: assets/lr_g.png  used on input line 469.
 (pdftex.def)             Requested size: 229.49844pt x 183.46222pt.
-<assets/lr_d.png, id=323, 338.26375pt x 251.94125pt>
+ [9 <./assets/g_loss.png> <./assets/d_loss.png> <./assets/val_g_loss.png> <./assets/val_d_loss.png>]
+<assets/lr_d.png, id=329, 338.26375pt x 251.94125pt>
 File: assets/lr_d.png Graphic file (type png)
 <use assets/lr_d.png>
-Package pdftex.def Info: assets/lr_d.png  used on input line 484.
+Package pdftex.def Info: assets/lr_d.png  used on input line 476.
 (pdftex.def)             Requested size: 229.49844pt x 170.9372pt.
-<assets/gan_loss_A.png, id=324, 330.23375pt x 255.95625pt>
+<assets/gan_loss_A.png, id=330, 330.23375pt x 255.95625pt>
 File: assets/gan_loss_A.png Graphic file (type png)
 <use assets/gan_loss_A.png>
-Package pdftex.def Info: assets/gan_loss_A.png  used on input line 493.
+Package pdftex.def Info: assets/gan_loss_A.png  used on input line 485.
 (pdftex.def)             Requested size: 229.49844pt x 177.88321pt.
- [9 <./assets/val_g_loss.png> <./assets/val_d_loss.png> <./assets/lr_g.png> <./assets/lr_d.png>]
-<assets/gan_loss_B.png, id=333, 333.245pt x 257.96375pt>
+<assets/gan_loss_B.png, id=331, 333.245pt x 257.96375pt>
 File: assets/gan_loss_B.png Graphic file (type png)
 <use assets/gan_loss_B.png>
-Package pdftex.def Info: assets/gan_loss_B.png  used on input line 500.
+Package pdftex.def Info: assets/gan_loss_B.png  used on input line 492.
 (pdftex.def)             Requested size: 229.49844pt x 177.65665pt.
-<assets/d_loss_A.png, id=334, 334.24875pt x 259.97125pt>
+<assets/d_loss_A.png, id=332, 334.24875pt x 259.97125pt>
 File: assets/d_loss_A.png Graphic file (type png)
 <use assets/d_loss_A.png>
-Package pdftex.def Info: assets/d_loss_A.png  used on input line 507.
+Package pdftex.def Info: assets/d_loss_A.png  used on input line 499.
 (pdftex.def)             Requested size: 229.49844pt x 178.50368pt.
-<assets/d_loss_B.png, id=335, 332.24126pt x 262.9825pt>
+ [10 <./assets/lr_g.png> <./assets/lr_d.png> <./assets/gan_loss_A.png> <./assets/gan_loss_B.png>]
+<assets/d_loss_B.png, id=341, 332.24126pt x 262.9825pt>
 File: assets/d_loss_B.png Graphic file (type png)
 <use assets/d_loss_B.png>
-Package pdftex.def Info: assets/d_loss_B.png  used on input line 514.
+Package pdftex.def Info: assets/d_loss_B.png  used on input line 506.
 (pdftex.def)             Requested size: 229.49844pt x 181.65874pt.
-<assets/cycle_loss_A.png, id=336, 336.25626pt x 260.975pt>
+<assets/cycle_loss_A.png, id=342, 336.25626pt x 260.975pt>
 File: assets/cycle_loss_A.png Graphic file (type png)
 <use assets/cycle_loss_A.png>
-Package pdftex.def Info: assets/cycle_loss_A.png  used on input line 523.
+Package pdftex.def Info: assets/cycle_loss_A.png  used on input line 515.
 (pdftex.def)             Requested size: 229.49844pt x 178.1177pt.
- [10 <./assets/gan_loss_A.png> <./assets/gan_loss_B.png> <./assets/d_loss_A.png> <./assets/d_loss_B.png>]
-<assets/cycle_loss_B.png, id=345, 330.23375pt x 252.945pt>
+<assets/cycle_loss_B.png, id=343, 330.23375pt x 252.945pt>
 File: assets/cycle_loss_B.png Graphic file (type png)
 <use assets/cycle_loss_B.png>
-Package pdftex.def Info: assets/cycle_loss_B.png  used on input line 530.
+Package pdftex.def Info: assets/cycle_loss_B.png  used on input line 522.
 (pdftex.def)             Requested size: 229.49844pt x 175.79047pt.
- (./report.bbl
+ (./report.bbl [11 <./assets/d_loss_A.png> <./assets/d_loss_B.png> <./assets/cycle_loss_A.png> <./assets/cycle_loss_B.png>]
 Underfull \hbox (badness 4416) in paragraph at lines 60--64
  []\OT1/cmr/m/n/9 Chitwan Sa-haria, William Chan, Hui-wen Chang,
  []
 
-) [11 <./assets/cycle_loss_A.png> <./assets/cycle_loss_B.png>] (./report.aux)
+) [12] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: BDCC6A932DAFF6753F2C7DACC3ECA58F;8158.
+(rerunfilecheck)             Checksum: 048FD4ACCC1225DC99FA1A04E39CCA3D;7995.
  ) 
 Here is how much of TeX's memory you used:
- 13595 strings out of 474116
- 211471 string characters out of 5743682
+ 13596 strings out of 474116
+ 211480 string characters out of 5743682
  1950187 words of memory out of 5000000
  35682 multiletter control sequences out of 15000+600000
  570329 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,977b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1344b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on report.pdf (11 pages, 2319960 bytes).
+Output written on report.pdf (12 pages, 2580381 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 358 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 444 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
  469 words of extra memory for PDF output out of 10000 (max. 10000000)
 

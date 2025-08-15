@@ -1,5 +1,5 @@
 """
-CycleGAN model implementation with enhanced architecture from Fu (2022).
+CycleGAN model implementation for living room style transfer.
 """
 import os
 import random
@@ -16,7 +16,7 @@ from config import LEARNING_RATE_G, LEARNING_RATE_D, BETA1, BETA2, LAMBDA_CYCLE,
 class CycleGAN(nn.Module):
     """
     CycleGAN model for unpaired image-to-image translation.
-    Implements the improved architecture from Fu (2022).
+    Implements the CycleGAN architecture for living room style transfer.
     """
     def __init__(
         self,

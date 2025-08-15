@@ -95,7 +95,7 @@ def compute_lpips(model, dataloader_A, dataloader_B, lpips_model, device):
     return lpips_scores
 
 
-def generate_test_samples(model, dataloader_A, dataloader_B, device, output_dir, num_samples=5):
+def generate_test_samples(model, dataloader_A, dataloader_B, device, output_dir, num_samples=30):
     """
     Generate and save test samples.
     

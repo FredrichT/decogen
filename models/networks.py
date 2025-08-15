@@ -1,6 +1,6 @@
 """
 Network architectures for CycleGAN.
-Based on the improved architecture from Fu (2022).
+Implements ResNet-based generators and multi-scale discriminators.
 """
 import torch
 import torch.nn as nn
@@ -39,7 +39,7 @@ def init_weights(net, init_type='normal', init_gain=0.02):
     return net
 
 
-# Improved ResNet block from Fu (2022)
+# ResNet block for CycleGAN generator
 class ResnetBlock(nn.Module):
     """Define a Resnet block with improved structure for style transfer"""
     def __init__(self, dim, use_bias=True):
@@ -73,7 +73,7 @@ class ResnetBlock(nn.Module):
         return out
 
 
-# Improved Generator from Fu (2022)
+# ResNet-based Generator for CycleGAN
 class ResnetGenerator(nn.Module):
     """Enhanced ResNet generator architecture for style transfer"""
     def __init__(
@@ -135,7 +135,7 @@ class ResnetGenerator(nn.Module):
         return self.model(input)
 
 
-# Multi-scale discriminator from Fu (2022)
+# Multi-scale PatchGAN discriminator
 class MultiScaleDiscriminator(nn.Module):
     """Multi-scale discriminator that evaluates at different resolutions"""
     def __init__(self, input_nc=3, ndf=64, n_layers=3, use_spectral_norm=True, dropout_rate=0.0):

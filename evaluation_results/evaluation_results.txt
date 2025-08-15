@@ -1,0 +1,14 @@
+Evaluation Results:
+
+LPIPS Scores (lower is better for cycle consistency):
+Cycle Consistency A: 0.3768
+Cycle Consistency B: 0.3868
+Average Cycle Consistency: 0.3818
+Perceptual A to B: 0.4250
+Perceptual B to A: 0.3838
+Average Perceptual: 0.4044
+
+FID Scores (lower is better):
+FID A to B: 127.0767
+FID B to A: 152.0945
+Average FID: 139.5856

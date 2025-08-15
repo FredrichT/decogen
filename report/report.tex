@@ -35,14 +35,14 @@
 
 Interior design visualization remains challenging for non-professionals. Most people struggle to imagine how their spaces would look in different design styles. Traditional visualization methods require either professional design skills or extensive photo editing expertise.\\
 
-In this paper, we explore a machine learning approach for transforming room interior images between design styles. Our method investigates an enhanced CycleGAN architecture that aims to preserve structural elements while changing aesthetic features.\\
+In this paper, we explore a machine learning approach for transforming room interior images between design styles. Our method investigates a CycleGAN architecture for style transfer between different interior design aesthetics.\\
 
 Our work examines:
 
 \begin{itemize}
     \item Adapting CycleGAN for room style transfer
-    \item Implementing multi-scale discriminators and improved residual blocks 
-    \item Testing a structural preservation loss to maintain architectural elements
+    \item Implementing multi-scale discriminators and enhanced residual blocks 
+    \item Using asymmetric learning rate scheduling to improve training stability
     \item Evaluating results using LPIPS and FID metrics
 \end{itemize}
 
@@ -64,7 +64,7 @@ While these models can produce impressive style transformations with text guidan
 \subsection{Interior Design Applications}
 Image translation and style transfer techniques have been applied to interior design in both academic research and commercial applications. Several existing tools offer interior visualization capabilities. 
 
-We chose to work with the classical CycleGAN architecture for its established ability to work with unpaired image datasets and its accessible computational requirements compared to newer diffusion-based approaches. This makes it well-suited for interior design applications where paired before/after images are rarely available.
+We chose to work with the CycleGAN architecture for its established ability to work with unpaired image datasets and its accessible computational requirements compared to newer diffusion-based approaches. This makes it well-suited for interior design applications where paired before/after images are rarely available.
 
 \section{Methodology}
 
@@ -76,7 +76,7 @@ The dataset characteristics include:
 
 \begin{itemize}
     \item \textbf{Total images}: 2,069 living room images
-    \item \textbf{Coastal style}: 1,049 images featuring light, airy spaces with natural materials, neutral colors, and beach-inspired elements
+    \item \textbf{Coastal style}: 1,049 images featuring light, airy spaces with natural materials, white and blue color palettes, and beach-inspired elements
     \item \textbf{Eclectic style}: 1,020 images showcasing bold, mixed patterns, vibrant colors, and diverse decorative elements from various design periods
     \item \textbf{Image quality}: Professional interior photography with consistent lighting and composition
     \item \textbf{Organization}: Images directly organized into style-specific directories (\texttt{dataset/coastal/} and \texttt{dataset/eclectic/})
@@ -88,7 +88,7 @@ For training our model, we split each style category into train (70\%), validati
 
 \subsection{Model Architecture}
 
-Our architecture is based on the classical CycleGAN \cite{zhu2017unpaired} framework. The overall system consists of two generator networks and two discriminator networks, enabling bidirectional translation between coastal and eclectic living room styles. Figure~\ref{fig:architecture} illustrates the high-level architecture of our system.
+Our architecture is based on the CycleGAN \cite{zhu2017unpaired} framework. The overall system consists of two generator networks and two discriminator networks, enabling bidirectional translation between coastal and eclectic living room styles. Figure~\ref{fig:architecture} illustrates the high-level architecture of our system.
 
 \begin{figure}[htbp]
     \centering
@@ -127,7 +127,7 @@ This approach helps the model distinguish between coastal and eclectic styles by
 
 
 \subsection{Loss Functions}
-Our training objective combines two main loss terms following the classical CycleGAN approach:
+Our training objective combines two main loss terms following the CycleGAN approach:
 \begin{equation}
 \mathcal{L} = \mathcal{L}_{GAN} + \lambda_{cycle}\mathcal{L}_{cycle}
 \end{equation}
@@ -144,13 +144,13 @@ This loss ensures that transformed images can be mapped back to their original v
 \mathcal{L}_{cycle} = \mathbb{E}_{x}[||G_B(G_A(x)) - x||_1] + \mathbb{E}_{y}[||G_A(G_B(y)) - y||_1]
 \end{equation}
 
-This classical CycleGAN formulation allows the generators to perform substantial style transformations while maintaining cycle consistency, which is essential for unpaired training scenarios where direct supervision is unavailable.
+This CycleGAN formulation allows the generators to perform substantial style transformations while maintaining cycle consistency, which is essential for unpaired training scenarios where direct supervision is unavailable.
 
 \section{Implementation}
 
 \subsection{System Overview}
 
-We implemented our system in Python using PyTorch. The system handles the complete pipeline from dataset preparation to inference, with special attention to preserving architectural elements during style transformation.
+We implemented our system in Python using PyTorch. The system handles the complete pipeline from dataset preparation to inference.
 
 \subsection{Project Structure}
 
@@ -171,7 +171,7 @@ Our codebase is organized into several modular components:
     \begin{itemize}
         \item \texttt{cycle\_gan.py}: Implements the core CycleGAN model class, coordinating the interaction between generators, discriminators, and multiple loss functions.
         \item \texttt{networks.py}: Defines the ResNet generator, multi-scale discriminator, and perceptual network architectures.
-        \item \texttt{losses.py}: Implements the loss functions including GAN, cycle consistency, identity, and structural preservation losses.
+        \item \texttt{losses.py}: Implements the loss functions including GAN and cycle consistency losses.
     \end{itemize}
     
     \item \texttt{utils.py}: Provides utility functions for image processing, tensor-to-image conversion, and visualization.
@@ -190,7 +190,7 @@ We trained our model using the following hyperparameters:
     
     \item \textbf{Image size}: 256×256, offering a good balance between preserving room details while keeping reasonable computational requirements.
     
-    \item \textbf{Loss weights}: $\lambda_{cycle}=5.0$. We use only cycle consistency loss alongside the adversarial loss, following a simplified classical CycleGAN approach that allows more creative freedom in style transformation.
+    \item \textbf{Loss weights}: $\lambda_{cycle}=5.0$. We use only cycle consistency loss alongside the adversarial loss, following a simplified CycleGAN approach that allows more creative freedom in style transformation.
 \end{itemize}
 
 The training process included several strategies for stability:
@@ -206,15 +206,13 @@ Weights \& Biases allowed us to observe loss curves for adversarial and cycle co
 
 \subsection{Training Monitoring}
 
-We integrated Weights \& Biases (wandb) into our training pipeline to track model performance throughout the 100 epochs. By monitoring various loss components individually, we gained valuable insights into the model's learning dynamics and convergence patterns.
+We integrated Weights \& Biases (wandb) into our training pipeline to track model performance throughout the training. By monitoring various loss components individually, we gained valuable insights into the model's learning dynamics and convergence patterns.
 
 \subsubsection{Overall Loss Progression}
 
-The generator loss (Figure~\ref{fig:g_loss}) shows clear correlation with the learning rate restart schedule. The loss exhibits periodic spikes corresponding to learning rate restarts at epochs 50, 150, and 350, followed by gradual improvement. Notably, after the final warm restart at epoch 350, the generator loss shows a sustained decreasing trend from approximately 2.8 to 1.8, indicating significant learning progress in the final training phase. \\
+The validation losses (Figures~\ref{fig:val_g_loss} and \ref{fig:val_d_loss}) reveal important training dynamics. The validation generator loss shows fluctuations throughout training, but after the final warm restart at epoch 350, it demonstrates a stable decreasing trend from approximately 0.7 to 0.4 by epoch 500, indicating the generator was performing better with improved stability. Conversely, the validation discriminator loss shows a concerning upward trend throughout training, rising from approximately 0.25 to 0.35 by epoch 500. This divergence suggests that after the final restart, the generator began learning more effectively while the discriminator's validation performance degraded. The high validation losses indicate potential overfitting and suggest that longer training with proper regularization could yield better generalization results. This degradation is also partly due to our deliberate choice of asymmetric learning rates (lower for the discriminator) to prevent the discriminator from outperforming the generator too much. Alternative techniques such as training the discriminator every two epochs instead of every epoch could help maintain better adversarial balance while preserving generator learning capability. \\\\
 
-The discriminator loss (Figure~\ref{fig:d_loss}) demonstrates steady improvement throughout training, decreasing from initial values around 0.5 to approximately 0.3 by epoch 500. The discriminator shows stable learning without the periodic disruptions seen in the generator, consistent with its steady learning rate decay schedule. \\
-
-The validation losses (Figures~\ref{fig:val_g_loss} and \ref{fig:val_d_loss}) reveal interesting training dynamics. While the validation generator loss shows fluctuations throughout training, a positive trend emerges after the final warm restart at epoch 350, where the generator shows improved performance. Conversely, the validation discriminator loss shows a concerning upward trend in later epochs, rising from approximately 0.25 to 0.35 by epoch 500. This divergence suggests that after the final restart, the generator began learning more effectively while the discriminator's validation performance degraded. The high validation losses indicate potential overfitting and suggest that longer training with proper regularization could yield better generalization results.
+An important observation is that the high variance observed for the validation losses at the beginning of training progressively decreased throughout the training process. By the end of training, we achieved both lower variance and a decreasing trend for the validation generator loss, making later epoch models more reliable. Given the stable decreasing trend observed in the final epochs, longer training could potentially lead to better results.
 
 \subsubsection{Learning Rate Schedule}
 
@@ -222,13 +220,13 @@ The generator and discriminator learning rates (Figures~\ref{fig:lr_g} and \ref{
 
 \subsubsection{Domain-Specific GAN and Discriminator Losses}
 
-The domain-specific GAN losses (Figures~\ref{fig:gan_loss_A} and \ref{fig:gan_loss_B}) show distinct behaviors for each domain. Domain A exhibits an upward trend after epoch 300, reaching values around 0.55 by the end of training, indicating increased difficulty in fooling the discriminator. Domain B shows more stable performance with gradual improvement until epoch 400, followed by slight deterioration. \\
+The domain-specific GAN losses (Figures~\ref{fig:gan_loss_A} and \ref{fig:gan_loss_B}) show distinct behaviors for each domain. Domain A shows an upward trend after epoch 300, peaking at around 0.55 at epoch 350 (the final warm restart), but then decreases back to approximately 0.4 by the end of training, indicating improved generator performance after the restart. Domain B shows more stable performance with gradual improvement until epoch 400, followed by slight deterioration. \\
 
-The discriminator losses for both domains (Figures~\ref{fig:d_loss_A} and \ref{fig:d_loss_B}) demonstrate effective learning. Domain A discriminator loss decreases steadily from 0.25 to approximately 0.15, while domain B shows similar convergence from 0.25 to 0.18. Both discriminators maintain stable performance in later epochs, suggesting good adversarial balance.
+The discriminator losses for both domains (Figures~\ref{fig:d_loss_A} and \ref{fig:d_loss_B}) show interesting dynamics. Both domain A and B discriminator losses decrease steadily until the final warm restart at epoch 350, reaching their lowest values around 0.1. However, after the restart, both discriminator losses begin to increase, indicating that the improved generator performance after the restart made it more challenging for the discriminators to distinguish real from fake images.
 
 \subsubsection{Cycle Consistency}
 
-The cycle consistency losses (Figures~\ref{fig:cycle_loss_A} and \ref{fig:cycle_loss_B}) demonstrate effective learning of the bidirectional mapping. Both domains show strong convergence, starting from values around 1.3 and decreasing to approximately 0.5-0.6 by training completion. The cycle losses exhibit periodic spikes corresponding to the generator learning rate restarts, but show consistent recovery and improvement. Notably, both domains achieve their best cycle consistency in the final epochs after the last warm restart, supporting our observation that the generator learned most effectively in this period. 
+The cycle consistency losses (Figures~\ref{fig:cycle_loss_A} and \ref{fig:cycle_loss_B}) demonstrate effective learning of the bidirectional mapping. Both domains show strong convergence, starting from values above 1.0 and decreasing to approximately 0.5-0.6 by training completion. The cycle losses shows periodic spikes corresponding to the generator learning rate restarts, but show consistent recovery and improvement.
 
 \subsection{Evaluation Metrics}
 
@@ -238,7 +236,7 @@ We evaluated our model using two complementary metrics:
     \item \textbf{LPIPS} (Learned Perceptual Image Patch Similarity): This perceptual metric measures similarity between images based on features extracted from pre-trained networks. We used LPIPS to evaluate two aspects:
     \begin{itemize}
         \item Cycle consistency: How well the original image is reconstructed after a full translation cycle (A→B→A)
-        \item Structural preservation: How well architectural elements are maintained when comparing original and style-transferred images
+        \item Perceptual similarity: How perceptually similar the style-transferred images are to images from the target domain
     \end{itemize}
     
     \item \textbf{FID} (Fréchet Inception Distance): This metric measures the distance between feature distributions of real and generated images using the Inception-v3 network. Lower FID scores indicate generated images more similar to real ones, providing an assessment of overall generation quality and style transfer effectiveness.
@@ -248,11 +246,11 @@ These quantitative metrics, combined with qualitative visual assessment, allowed
 
 \section{Experiments and Results}
 
-We conducted an evaluation of our style transfer model, inspecting both quantitative metrics and qualitative visual results. Our evaluation focused on the bidirectional style transfer between coastal and eclectic living room styles.
+We conducted an evaluation of our style transfer model, inspecting both quantitative metrics and qualitative visual results. Our evaluation focused on the bidirectional style transfer between coastal and eclectic living room styles. We selected the model from epoch 470 for evaluation as it exhibited one of the lowest validation generator losses after the final warm restart and produced visually superior sample results. While this choice could be debated—the overall lowest validation generator loss occurred at epoch 86 (0.184), suggesting we could have used the closest saved model (epoch 85)—that earlier model showed high validation variance (0.41), reflecting the instability characteristic of early training phases. The high variance observed at the beginning of training progressively decreased, and by the end of training we achieved both lower variance and a decreasing loss trend, making the epoch 470 model more reliable for evaluation.
 
 \subsection{Quantitative Evaluation}
 
-Table~\ref{tab:metrics} presents the quantitative evaluation metrics of our style transfer model after training for 100 epochs.
+Table~\ref{tab:metrics} presents the quantitative evaluation metrics of our style transfer model after training for 500 epochs (evaluated at epoch 470).
 
 \begin{table}[h]
 \centering
@@ -260,30 +258,30 @@ Table~\ref{tab:metrics} presents the quantitative evaluation metrics of our styl
 \hline
 \textbf{Metric} & \textbf{Value} \\
 \hline
-LPIPS Cycle Consistency A & 0.2529 \\
-LPIPS Cycle Consistency B & 0.2544 \\
-LPIPS Average Cycle Consistency & 0.2536 \\
-LPIPS Structural A to B & 0.2620 \\
-LPIPS Structural B to A & 0.2163 \\
-LPIPS Average Structural & 0.2391 \\
-FID A to B & 186.0744 \\
-FID B to A & 199.4874 \\
-FID Average & 192.7809 \\
+LPIPS Cycle Consistency A & 0.3768 \\
+LPIPS Cycle Consistency B & 0.3868 \\
+LPIPS Average Cycle Consistency & 0.3818 \\
+LPIPS Perceptual A to B & 0.4250 \\
+LPIPS Perceptual B to A & 0.3838 \\
+LPIPS Average Perceptual & 0.4044 \\
+FID A to B & 127.0767 \\
+FID B to A & 152.0945 \\
+FID Average & 139.5856 \\
 \hline
 \end{tabular}
-\caption{Evaluation metrics for our living room style transfer model.}
+\caption{Evaluation metrics for our living room style transfer model at epoch 470.}
 \label{tab:metrics}
 \end{table}
 
-The LPIPS scores measure perceptual similarity (lower is better), with scores around 0.25 indicating reasonable preservation of content while allowing for style changes. Our model achieves reasonable cycle consistency, with an average score of 0.2536. This suggests that images can be transformed to the target style and back while maintaining content features. The structural preservation scores are similar, with slightly better preservation when converting from Eclectic to Coastal (0.2163) compared to Coastal to Eclectic (0.2620). \\
+The LPIPS scores measure perceptual similarity (lower is better), with our final model achieving cycle consistency scores around 0.38. Our model achieves reasonable cycle consistency with an average score of 0.3818, indicating that images can be transformed to the target style and back while maintaining reasonable content preservation. The perceptual transfer scores (0.4044 average) are slightly higher, which is expected as they measure the perceptual difference between domains—indicating meaningful style transfer is occurring. \\
 
-FID scores measure the distribution distance between real and generated images. The FID scores (186.0744 for A to B and 199.4874 for B to A) indicate that while the generated images capture stylistic elements of the target domain, there remains a gap between the distribution of generated images and real images. This is expected given the complexity of living room designs and the challenging nature of transferring between distinct design styles.
+The FID scores measure the distribution distance between real and generated images, with lower scores indicating better quality. Our model achieved FID scores of 127.08 for Coastal to Eclectic transfer and 152.09 for Eclectic to Coastal transfer (average: 139.59). The asymmetry in FID scores suggests that transforming from Eclectic to Coastal style is more challenging, likely due to the simplification required to achieve the minimalist coastal aesthetic.
 
 \subsection{Qualitative Analysis}
 
 \subsubsection{Coastal to Eclectic Transfer}
 
-Figure~\ref{fig:coastal_to_eclectic_results} shows examples of transforming coastal living room styles to eclectic style.
+Figures~\ref{fig:real_coastal} and \ref{fig:coastal_to_eclectic_results} show examples of transforming coastal living room styles to eclectic style.
 
 \begin{figure}[h]
 \centering
@@ -309,11 +307,11 @@ Figure~\ref{fig:coastal_to_eclectic_results} shows examples of transforming coas
 \label{fig:coastal_to_eclectic_results}
 \end{figure}
 
-Our model transforms coastal living rooms when converting to eclectic style by introducing bolder colors and patterns. We observe that the model adds vibrant decorative elements and transforms neutral coastal palettes into more diverse color schemes typical of eclectic design. The overall room structure—furniture placement and architectural elements—is preserved during the transformation.
+Our model transforms coastal living rooms when converting to eclectic style by introducing significantly more colors and vibrant patterns. We can clearly see that the generated eclectic images (Fake B) exhibit a much richer and more diverse color palette compared to the original coastal images, with the model successfully adding bold decorative elements and transforming the cool blue and white coastal palettes into the colorful schemes characteristic of eclectic design. While the overall room structure—furniture placement and architectural elements—is generally preserved during the transformation, we observe some deformations to objects and blurriness in the generated images, indicating quality limitations in the style transfer process.
 
 \subsubsection{Eclectic to Coastal Transfer}
 
-Figure~\ref{fig:eclectic_to_coastal_results} shows the transformation from eclectic to coastal living room style.
+Figures~\ref{fig:real_eclectic} and \ref{fig:eclectic_to_coastal_results} show the transformation from eclectic to coastal living room style.
 
 \begin{figure}[h]
 \centering
@@ -339,7 +337,7 @@ Figure~\ref{fig:eclectic_to_coastal_results} shows the transformation from eclec
 \label{fig:eclectic_to_coastal_results}
 \end{figure}
 
-When converting from Eclectic to Coastal style, our model simplifies the color palette and reduces visual complexity. The model transforms bold patterns and vibrant colors into the more neutral, calming tones characteristic of coastal design. Decorative elements are toned down to create the clean, airy aesthetic typical of coastal living rooms.
+When converting from Eclectic to Coastal style, our model simplifies the color palette and reduces visual complexity. We can clearly observe that the generated coastal images (Fake A) exhibit more bluish tones, effectively transforming bold patterns and vibrant colors into the cooler, blue and white palette characteristic of coastal design. The model successfully tones down decorative elements to create the clean, airy aesthetic typical of coastal living rooms. However, similar to the opposite direction, the generated images exhibit blurriness and object deformations, highlighting the quality limitations of our approach.
 
 \subsection{Cycle Consistency Analysis}
 
@@ -353,15 +351,15 @@ Figure~\ref{fig:cycle_consistency} illustrates the full cycle of transformations
 \label{fig:cycle_consistency}
 \end{figure}
 
-The cycle consistency results show that after a full transformation cycle, images return to a state visually similar to their originals. For the Coastal → Eclectic → Coastal cycle, the reconstructed image recovers the neutral tones and clean aesthetic, while for the Eclectic → Coastal → Eclectic cycle, the model successfully retrieves the bold patterns and vibrant colors of eclectic design.
+The cycle consistency results show that after a full transformation cycle, images return to a state almost similar to their originals. For the Coastal → Eclectic → Coastal cycle, the reconstructed image recovers the blue and white tones and clean aesthetic, while for the Eclectic → Coastal → Eclectic cycle, the model retrieves the bold patterns and vibrant colors of eclectic design. However, the reconstructed images suffer from deformation and blurriness compared to the original images, indicating quality degradation through the transformation cycle despite reasonable style recovery.
 
-\subsection{Structural Preservation}
+\subsection{Content Consistency Analysis}
 
-Our approach focuses on maintaining room structure while allowing meaningful style changes. As visible in Figures~\ref{fig:coastal_to_eclectic_results} and \ref{fig:eclectic_to_coastal_results}, our model preserves the living room layout, furniture positions, and architectural boundaries while transforming colors, patterns, and decorative elements. \\
+Our CycleGAN approach relies on cycle consistency loss to maintain image content while transforming style. As visible in Figures~\ref{fig:coastal_to_eclectic_results} and \ref{fig:eclectic_to_coastal_results}, the model naturally preserves room layout, furniture positions, and architectural boundaries while transforming colors, patterns, and decorative elements, though with noticeable quality degradation including blurriness and object deformations. \\
 
-The LPIPS structural scores (0.2620 for A to B and 0.2163 for B to A) support our visual observation that structural elements are largely preserved during style transfer. The better score for Eclectic to Coastal transformation suggests that simplifying bold patterns into neutral coastal aesthetics may be more straightforward than the reverse transformation. \\
+The cycle consistency LPIPS scores (0.3818 average) indicate that images can be reasonably reconstructed after the full transformation cycle, though these scores suggest there is significant room for improvement to achieve truly high-quality results. The asymmetric performance (better Eclectic to Coastal than Coastal to Eclectic based on FID scores) suggests that simplifying bold patterns into the blue and white coastal aesthetics may be more straightforward than the reverse transformation. \\
 
-Looking at the transformation examples, we can observe that furniture positions and room layouts remain consistent through the style transfer process, while color palettes, patterns, and decorative elements are modified to match the target aesthetic. This demonstrates the model's ability to distinguish between spatial content that should be preserved and stylistic elements that should be transformed.
+Looking at the transformation examples, we observe that furniture positions and room layouts remain largely consistent through the style transfer process, while color palettes, patterns, and decorative elements are modified to match the target aesthetic. However, both the quantitative metrics and visual results demonstrate that the current approach requires substantial improvements to deliver truly satisfactory style transfer quality. This behavior emerges naturally from the cycle consistency constraint rather than from explicit structural preservation objectives.
 
 \section{Discussion}
 
@@ -371,11 +369,11 @@ While our CycleGAN approach produces promising results, our project has several 
 
 Our experiments demonstrate that the current approach can effectively transform certain stylistic elements like colors, patterns, and decorative elements, but falls short in making more substantial changes that may be desired in interior design contexts. The model primarily alters the "atmosphere" of the living rooms—adding bold patterns when converting to eclectic style or simplifying to neutral tones for coastal style—but struggles with more comprehensive transformations. \\
 
-The high FID scores (average of 192.78) indicate a significant distribution gap between generated and real images, suggesting that our transformations are not fully capturing the authentic characteristics of each design style. This limitation may stem from the challenging nature of style transfer between distinctly different design aesthetics.
+The high FID scores (average of 192.78) indicate a significant distribution gap between generated and real images, suggesting that our transformations are not fully capturing the authentic characteristics of each design style. This limitation may come from the challenging nature of style transfer between distinctly different design aesthetics.
 
 \subsection{Insufficient Feature Engineering}
 
-One shortcoming of our implementation is the minimal feature engineering specific to interior design. We used a classical CycleGAN approach without developing domain-specific features tailored to living room style transfer. For example:
+One shortcoming of our implementation is the minimal feature engineering specific to interior design. We used a CycleGAN approach without developing domain-specific features tailored to living room style transfer. For example:
 
 \begin{itemize}
     \item No semantic segmentation to distinguish between different living room elements (furniture, walls, decorative items, etc.)
@@ -386,30 +384,23 @@ One shortcoming of our implementation is the minimal feature engineering specifi
 
 These limitations restrict the model's ability to make targeted, design-relevant transformations, instead producing more general stylistic changes.
 
-\subsection{Structural Preservation vs. Design Transformation}
+\subsection{Successful Style Learning and Training Dynamics}
 
-A significant limitation lies in the classical CycleGAN's tendency to preserve spatial structure. While this helps maintain room layouts, interior design transformation often benefits from changes to furniture arrangements and decorative elements. The model's inclination to preserve structure prevents it from:
+Our CycleGAN architecture showed style learning capabilities throughout training. The validation generator loss showed stable decreasing trends after the final warm restart, indicating that the generator was effectively learning to perform style transformations. The model achieved clear stylistic changes between coastal and eclectic aesthetics, transforming color palettes from cool blue and white tones to vibrant, diverse colors and vice versa. The asymmetric learning rate scheduling proved effective in preventing discriminator dominance while allowing the generator to continue improving. \\
+
+The training dynamics suggest that our architecture has the potential to achieve better results with longer training periods, as evidenced by the sustained improvement in the final epochs. This suggests that with longer training periods, hyperparameter tuning, a larger dataset, and potentially other regularization techniques, we are on the right track to achieve good results with our approach.
+
+\subsection{Limitations and Areas for Improvement}
+
+While our approach successfully achieves style transfer, several limitations need to be addressed. The primary challenge is image quality degradation, including blurriness and object deformations that compromise visual fidelity. Additionally, the CycleGAN's tendency to preserve spatial content through cycle consistency, while beneficial for maintaining room layouts, limits design transformations such as:
 
 \begin{itemize}
     \item Replacing coastal-style furniture with bold eclectic pieces
-    \item Transforming decorative elements between styles
-    \item Changing patterns and textures in a style-appropriate manner
-    \item Modifying lighting and accessories which are key style indicators
+    \item Generating new decorative elements not present in the original image
+    \item Understanding the semantic meaning of different room components for targeted transformations
 \end{itemize}
 
-This reveals a fundamental limitation: successful interior style transfer often benefits from changes to decorative elements, yet the model tends to preserve existing spatial arrangements. This constraint limits the system's ability to create more dramatic style transformations.
-
-\subsection{CycleGAN Limitations for Design Applications}
-
-Our results suggest that CycleGAN, even with enhancements, may not be the optimal architecture for sophisticated interior design transformations. The inherent limitations include:
-
-\begin{itemize}
-    \item Inability to generate new elements not present in the original image
-    \item Limited capacity to understand the semantic meaning of different room components
-    \item Tendency to produce artifacts in complex regions with many geometric details
-\end{itemize}
-
-These architectural limitations are evident in our results, where style transfer is largely limited to color shifts and texture changes rather than meaningful design transformations.
+However, these limitations are primarily related to image quality and architectural constraints rather than fundamental failures in style learning capability.
 
 \subsection{Alternative Approaches}
 
@@ -422,28 +413,29 @@ The limitations identified suggest that newer generative models, particularly di
     \item Preserving important elements while allowing for targeted modifications
 \end{itemize}
 
-A diffusion-based approach would potentially allow for both preservation of room structure and transformation of specific design elements through controlled generation. This could enable more meaningful style transfers that actually replace industrial fixtures with Scandinavian ones, rather than merely adjusting their appearance. \\
+A diffusion-based approach would potentially allow for both preservation of room structure and transformation of specific design elements through controlled generation. This could enable more meaningful style transfers that actually replace bold eclectic decorative elements with clean coastal ones, or vice versa, rather than merely adjusting their appearance. \\
 
-Furthermore, we could also address the fundamental limitation of our current system, which applies the same transformation logic to all bathroom elements regardless of their design significance.
+Furthermore, we could also address the fundamental limitation of our current system, which applies the same transformation logic to all room elements regardless of their design significance.
 
 \section{Conclusion and Future Work}
 
-In this paper, we presented a deep learning approach for living room interior design style transfer using a classical CycleGAN architecture. Our system transforms living room images between coastal and eclectic styles, changing colors, patterns, and decorative elements while preserving the room structure. The quantitative results, with LPIPS cycle consistency scores around 0.25, show that our model achieves a reasonable balance between style transformation and content preservation. Our visual results confirm this finding, showing clear stylistic changes from neutral, airy coastal aesthetics to bold, vibrant eclectic designs and vice versa. \\
+In this paper, we presented a deep learning approach for living room interior design style transfer using a CycleGAN architecture. Our system transforms living room images between coastal and eclectic styles, changing colors, patterns, and decorative elements through adversarial training and cycle consistency loss. The quantitative results, while showing room for improvement, demonstrate that our architecture achieves meaningful style transfer. The validation generator loss showed stable decreasing trends after the final warm restart, suggesting that our architecture may work effectively through longer training periods, hyperparameter tuning, and other optimization techniques. Our visual results confirm clear stylistic transformations from cool, blue and white coastal aesthetics to bold, vibrant eclectic designs and vice versa. \\
 
-Despite these achievements, our approach has limitations in making substantial decorative and furniture modifications necessary for complete style transformations. Future work should incorporate semantic understanding of room elements to enable more targeted transformations, potentially allowing specific decorative elements to be redesigned while maintaining overall room structure. Additionally, exploring more advanced generative models, such as diffusion-based approaches, could overcome the limitations of CycleGAN and enable more sophisticated interior design transformations with improved fidelity. In conclusion, while our current system shows the feasibility of automated room style transfer between distinct design aesthetics, the path toward truly comprehensive design visualization will require more nuanced approaches that better balance preservation and transformation.
+The main limitations observed were image quality issues including blurriness and deformations. Our generator learned to perform style transformations, as evidenced by the clear color palette changes and stylistic modifications. Future work should focus on addressing the image quality degradation while leveraging the promising training dynamics we observed through longer training periods, hyperparameter tuning, and larger datasets. In conclusion, while our system demonstrates the feasibility of CycleGAN-based room style transfer, newer generative techniques such as diffusion models should likely outperform this method by addressing style learning, image quality, and the generation of new furniture and decorative elements that are not present in the original images.
 
 
 % ==============================================================================
-
+\newpage
 \appendix
 \section{Training Visualizations}
 
-This appendix contains the complete set of training visualization charts generated during our model training process. These visualizations were captured using Weights \& Biases (wandb) monitoring tool over the course of 100 epochs.
+This appendix contains the complete set of training visualization charts generated during our model training process. These visualizations were captured using Weights \& Biases (wandb) monitoring tool over the course of 500 epochs.
 
 \subsection{Overall Loss Charts}
 
 \begin{figure}[H]
 \centering
+
 \includegraphics[width=0.45\textwidth]{assets/g_loss.png}
 \caption{Generator loss (g\_loss)}
 \label{fig:g_loss}
@@ -516,7 +508,7 @@ This appendix contains the complete set of training visualization charts generat
 \label{fig:d_loss_B}
 \end{figure}
 
-\subsection{Cycle Consistency and Structural Preservation Losses}
+\subsection{Cycle Consistency Losses}
 
 \begin{figure}[H]
 \centering
