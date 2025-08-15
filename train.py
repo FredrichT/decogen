@@ -202,7 +202,8 @@ def train(
                 # Log metrics and images
                 wandb.log({
                     'epoch': epoch,
-                    'learning_rate': model.optimizer_G.param_groups[0]['lr'],
+                    'learning_rate_g': model.optimizer_G.param_groups[0]['lr'],
+                    'learning_rate_d': model.optimizer_D.param_groups[0]['lr'],
                     **epoch_losses,
                     **wandb_images
                 })
@@ -232,7 +233,8 @@ def main():
     # Log config to wandb
     wandb.config.update({
         'batch_size': BATCH_SIZE,
-        'learning_rate': LEARNING_RATE,
+        'learning_rate_g': LEARNING_RATE_G,
+        'learning_rate_d': LEARNING_RATE_D,
         'num_epochs': NUM_EPOCHS,
         'image_size': IMAGE_SIZE,
         'lambda_cycle': LAMBDA_CYCLE,
