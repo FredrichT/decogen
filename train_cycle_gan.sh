@@ -31,7 +31,7 @@ export WANDB_PROJECT="decogen"
 
 # Lancer l'entraînement
 echo "Démarrage de l'entraînement..."
-python main.py train --batch_size 8 --epochs 700
+python main.py train --batch_size 8 --epochs 500
 
 # Afficher la date de fin
 echo "Date de fin: $(date)"

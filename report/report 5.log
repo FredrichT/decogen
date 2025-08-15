@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  15 AUG 2025 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  15 AUG 2025 14:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -382,7 +382,8 @@ Class revtex4-1 Info: multicol was not loaded (OK!) on input line 18.
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count299
 \l__pdf_internal_box=\box70
-) (./report.aux)
+)
+No file report.aux.
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -403,7 +404,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count300
 \scratchdimen=\dimen163
@@ -423,7 +424,6 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 18.
- (./report.out) (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
@@ -451,6 +451,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
  []
 
 
+Package natbib Warning: Citation `isola2017image' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `zhu2017unpaired' on page 1 undefined on input line 54.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 54--55
 []\OT1/cmr/m/n/10 Image-to-image trans-la-tion has seen sig-nif-i-cant
  []
@@ -465,6 +471,36 @@ Underfull \hbox (badness 2057) in paragraph at lines 54--55
 \OT1/cmr/m/n/10 train-ing with-out di-rectly cor-re-spond-ing be-fore/after
  []
 
+
+Package natbib Warning: Citation `gatys2016image' on page 1 undefined on input line 57.
+
+
+Package natbib Warning: Citation `johnson2016perceptual' on page 1 undefined on input line 57.
+
+
+Package natbib Warning: Citation `huang2017arbitrary' on page 1 undefined on input line 57.
+
+
+Package natbib Warning: Citation `huang2017arbitrary' on page 1 undefined on input line 57.
+
+
+Package natbib Warning: Citation `li2017universal' on page 1 undefined on input line 57.
+
+
+Package natbib Warning: Citation `ho2020denoising' on page 1 undefined on input line 60.
+
+
+Package natbib Warning: Citation `ramesh2022hierarchical' on page 1 undefined on input line 60.
+
+
+Package natbib Warning: Citation `rombach2022high' on page 1 undefined on input line 60.
+
+
+Package natbib Warning: Citation `saharia2022palette' on page 1 undefined on input line 62.
+
+
+Package natbib Warning: Citation `mmis2023dataset' on page 1 undefined on input line 73.
+
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Underfull \hbox (badness 1348) in paragraph at lines 85--86
 \OT1/cmr/m/n/10 palettes, nat-u-ral tex-tures, and min-i-mal-ist fur-ni-ture
@@ -475,7 +511,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
-<assets/cyclegan_architecture.png, id=225, 855.195pt x 684.5575pt>
+
+Package natbib Warning: Citation `zhu2017unpaired' on page 2 undefined on input line 91.
+
+
+LaTeX Warning: Reference `fig:architecture' on page 2 undefined on input line 91.
+
+<assets/cyclegan_architecture.png, id=24, 855.195pt x 684.5575pt>
 File: assets/cyclegan_architecture.png Graphic file (type png)
 <use assets/cyclegan_architecture.png>
 Package pdftex.def Info: assets/cyclegan_architecture.png  used on input line 95.
@@ -484,6 +526,9 @@ Package pdftex.def Info: assets/cyclegan_architecture.png  used on input line 95
 Overfull \hbox (9.0pt too wide) in paragraph at lines 95--96
  [][] 
  []
+
+
+Package natbib Warning: Citation `miyato2018spectral' on page 2 undefined on input line 120.
 
 [2 <./assets/cyclegan_architecture.png>]
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 138.
@@ -503,23 +548,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 213--214
  []
 
 
-Underfull \hbox (badness 4084) in paragraph at lines 215--216
-\OT1/cmr/m/n/10 im-prove-ment through-out train-ing, de-creas-ing from
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 221--222
-\OT1/cmr/m/n/10 neal-ing-Warm-Restarts with clear pe-ri-odic restarts at
- []
-
-
-Underfull \hbox (badness 1210) in paragraph at lines 225--226
-\OT1/cmr/m/n/10 more sta-ble per-for-mance with grad-ual im-prove-ment
+Underfull \hbox (badness 1184) in paragraph at lines 221--222
+\OT1/cmr/m/n/10 our asym-met-ric schedul-ing ap-proach. The gen-er-a-
  []
 
 
@@ -527,7 +562,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 225--226
 
  []
 
+
+Underfull \hbox (badness 1028) in paragraph at lines 231--232
+[]\OT1/cmr/m/n/10 The cy-cle con-sis-tency losses demon-strate ef-fec-tive
+ []
+
 [4]
+
+LaTeX Warning: Reference `tab:metrics' on page 5 undefined on input line 255.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -546,17 +589,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
-<assets/real_A.png, id=278, 256.96pt x 256.96pt>
+
+LaTeX Warning: Reference `fig:coastal_to_eclectic_results' on page 5 undefined on input line 286.
+
+<assets/real_A.png, id=67, 256.96pt x 256.96pt>
 File: assets/real_A.png Graphic file (type png)
 <use assets/real_A.png>
 Package pdftex.def Info: assets/real_A.png  used on input line 290.
 (pdftex.def)             Requested size: 127.5pt x 127.49945pt.
-<assets/fake_B.png, id=279, 256.96pt x 256.96pt>
+<assets/fake_B.png, id=68, 256.96pt x 256.96pt>
 File: assets/fake_B.png Graphic file (type png)
 <use assets/fake_B.png>
 Package pdftex.def Info: assets/fake_B.png  used on input line 298.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/rec_A.png, id=280, 256.96pt x 256.96pt>
+<assets/rec_A.png, id=69, 256.96pt x 256.96pt>
 File: assets/rec_A.png Graphic file (type png)
 <use assets/rec_A.png>
 Package pdftex.def Info: assets/rec_A.png  used on input line 304.
@@ -568,25 +614,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 313.
 
-<assets/real_B.png, id=291, 256.96pt x 256.96pt>
+
+LaTeX Warning: Reference `fig:eclectic_to_coastal_results' on page 6 undefined on input line 316.
+
+<assets/real_B.png, id=81, 256.96pt x 256.96pt>
 File: assets/real_B.png Graphic file (type png)
 <use assets/real_B.png>
 Package pdftex.def Info: assets/real_B.png  used on input line 320.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/fake_A.png, id=292, 256.96pt x 256.96pt>
+<assets/fake_A.png, id=82, 256.96pt x 256.96pt>
 File: assets/fake_A.png Graphic file (type png)
 <use assets/fake_A.png>
 Package pdftex.def Info: assets/fake_A.png  used on input line 328.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
-<assets/rec_B.png, id=293, 256.96pt x 256.96pt>
+<assets/rec_B.png, id=83, 256.96pt x 256.96pt>
 File: assets/rec_B.png Graphic file (type png)
 <use assets/rec_B.png>
 Package pdftex.def Info: assets/rec_B.png  used on input line 334.
 (pdftex.def)             Requested size: 101.99844pt x 101.99799pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:cycle_consistency' on page 6 undefined on input line 346.
 
-<assets/sample_1.png, id=295, 1136.0844pt x 570.2103pt>
+<assets/sample_1.png, id=84, 1136.0844pt x 570.2103pt>
 File: assets/sample_1.png Graphic file (type png)
 <use assets/sample_1.png>
 Package pdftex.def Info: assets/sample_1.png  used on input line 351.
@@ -597,7 +646,10 @@ Overfull \hbox (9.0pt too wide) in paragraph at lines 351--352
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:coastal_to_eclectic_results' on page 6 undefined on input line 360.
+
+
+LaTeX Warning: Reference `fig:eclectic_to_coastal_results' on page 6 undefined on input line 360.
 
 
 Underfull \hbox (badness 1616) in paragraph at lines 360--361
@@ -649,95 +701,188 @@ Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-<assets/g_loss.png, id=311, 333.245pt x 258.9675pt>
+<assets/g_loss.png, id=108, 333.245pt x 258.9675pt>
 File: assets/g_loss.png Graphic file (type png)
 <use assets/g_loss.png>
 Package pdftex.def Info: assets/g_loss.png  used on input line 447.
 (pdftex.def)             Requested size: 229.49844pt x 178.34792pt.
-<assets/d_loss.png, id=312, 335.2525pt x 258.9675pt>
+<assets/d_loss.png, id=109, 335.2525pt x 258.9675pt>
 File: assets/d_loss.png Graphic file (type png)
 <use assets/d_loss.png>
 Package pdftex.def Info: assets/d_loss.png  used on input line 454.
 (pdftex.def)             Requested size: 229.49844pt x 177.27705pt.
-<assets/val_g_loss.png, id=313, 334.24875pt x 255.95625pt>
+<assets/val_g_loss.png, id=110, 334.24875pt x 255.95625pt>
 File: assets/val_g_loss.png Graphic file (type png)
 <use assets/val_g_loss.png>
 Package pdftex.def Info: assets/val_g_loss.png  used on input line 461.
 (pdftex.def)             Requested size: 229.49844pt x 175.74686pt.
 [8 <./assets/g_loss.png> <./assets/d_loss.png>]
-<assets/val_d_loss.png, id=321, 331.2375pt x 252.945pt>
+<assets/val_d_loss.png, id=122, 331.2375pt x 252.945pt>
 File: assets/val_d_loss.png Graphic file (type png)
 <use assets/val_d_loss.png>
 Package pdftex.def Info: assets/val_d_loss.png  used on input line 468.
 (pdftex.def)             Requested size: 229.49844pt x 175.25398pt.
-<assets/lr_g.png, id=322, 325.215pt x 259.97125pt>
-File: assets/lr_g.png Graphic file (type png)
-<use assets/lr_g.png>
-Package pdftex.def Info: assets/lr_g.png  used on input line 477.
-(pdftex.def)             Requested size: 229.49844pt x 183.46222pt.
-<assets/lr_d.png, id=323, 338.26375pt x 251.94125pt>
-File: assets/lr_d.png Graphic file (type png)
-<use assets/lr_d.png>
-Package pdftex.def Info: assets/lr_d.png  used on input line 484.
-(pdftex.def)             Requested size: 229.49844pt x 170.9372pt.
-<assets/gan_loss_A.png, id=324, 330.23375pt x 255.95625pt>
+
+
+LaTeX Warning: File `assets/learning_rate.png' not found on input line 477.
+
+
+/Users/thomasfredrich/Documents/HEC/Master3/Q2/DL/decogen/report/report.tex:477: Package pdftex.def Error: File `assets/learning_rate.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.477 ...0.45\textwidth]{assets/learning_rate.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<assets/gan_loss_A.png, id=123, 330.23375pt x 255.95625pt>
 File: assets/gan_loss_A.png Graphic file (type png)
 <use assets/gan_loss_A.png>
-Package pdftex.def Info: assets/gan_loss_A.png  used on input line 493.
+Package pdftex.def Info: assets/gan_loss_A.png  used on input line 486.
 (pdftex.def)             Requested size: 229.49844pt x 177.88321pt.
- [9 <./assets/val_g_loss.png> <./assets/val_d_loss.png> <./assets/lr_g.png> <./assets/lr_d.png>]
-<assets/gan_loss_B.png, id=333, 333.245pt x 257.96375pt>
+<assets/gan_loss_B.png, id=124, 333.245pt x 257.96375pt>
 File: assets/gan_loss_B.png Graphic file (type png)
 <use assets/gan_loss_B.png>
-Package pdftex.def Info: assets/gan_loss_B.png  used on input line 500.
+Package pdftex.def Info: assets/gan_loss_B.png  used on input line 493.
 (pdftex.def)             Requested size: 229.49844pt x 177.65665pt.
-<assets/d_loss_A.png, id=334, 334.24875pt x 259.97125pt>
+[9 <./assets/val_g_loss.png> <./assets/val_d_loss.png> <./assets/gan_loss_A.png>]
+<assets/d_loss_A.png, id=139, 334.24875pt x 259.97125pt>
 File: assets/d_loss_A.png Graphic file (type png)
 <use assets/d_loss_A.png>
-Package pdftex.def Info: assets/d_loss_A.png  used on input line 507.
+Package pdftex.def Info: assets/d_loss_A.png  used on input line 500.
 (pdftex.def)             Requested size: 229.49844pt x 178.50368pt.
-<assets/d_loss_B.png, id=335, 332.24126pt x 262.9825pt>
+<assets/d_loss_B.png, id=140, 332.24126pt x 262.9825pt>
 File: assets/d_loss_B.png Graphic file (type png)
 <use assets/d_loss_B.png>
-Package pdftex.def Info: assets/d_loss_B.png  used on input line 514.
+Package pdftex.def Info: assets/d_loss_B.png  used on input line 507.
 (pdftex.def)             Requested size: 229.49844pt x 181.65874pt.
-<assets/cycle_loss_A.png, id=336, 336.25626pt x 260.975pt>
+<assets/cycle_loss_A.png, id=141, 336.25626pt x 260.975pt>
 File: assets/cycle_loss_A.png Graphic file (type png)
 <use assets/cycle_loss_A.png>
-Package pdftex.def Info: assets/cycle_loss_A.png  used on input line 523.
+Package pdftex.def Info: assets/cycle_loss_A.png  used on input line 516.
 (pdftex.def)             Requested size: 229.49844pt x 178.1177pt.
- [10 <./assets/gan_loss_A.png> <./assets/gan_loss_B.png> <./assets/d_loss_A.png> <./assets/d_loss_B.png>]
-<assets/cycle_loss_B.png, id=345, 330.23375pt x 252.945pt>
+<assets/cycle_loss_B.png, id=142, 330.23375pt x 252.945pt>
 File: assets/cycle_loss_B.png Graphic file (type png)
 <use assets/cycle_loss_B.png>
-Package pdftex.def Info: assets/cycle_loss_B.png  used on input line 530.
+Package pdftex.def Info: assets/cycle_loss_B.png  used on input line 523.
 (pdftex.def)             Requested size: 229.49844pt x 175.79047pt.
- (./report.bbl
-Underfull \hbox (badness 4416) in paragraph at lines 60--64
+
+
+LaTeX Warning: File `assets/struct_loss_A.png' not found on input line 530.
+
+
+/Users/thomasfredrich/Documents/HEC/Master3/Q2/DL/decogen/report/report.tex:530: Package pdftex.def Error: File `assets/struct_loss_A.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.530 ...0.45\textwidth]{assets/struct_loss_A.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[10 <./assets/gan_loss_B.png> <./assets/d_loss_A.png> <./assets/d_loss_B.png> <./assets/cycle_loss_A.png> <./assets/cycle_loss_B.png>]
+
+LaTeX Warning: File `assets/struct_loss_B.png' not found on input line 537.
+
+
+/Users/thomasfredrich/Documents/HEC/Master3/Q2/DL/decogen/report/report.tex:537: Package pdftex.def Error: File `assets/struct_loss_B.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.537 ...0.45\textwidth]{assets/struct_loss_B.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `assets/identity_loss_A.png' not found on input line 546.
+
+
+/Users/thomasfredrich/Documents/HEC/Master3/Q2/DL/decogen/report/report.tex:546: Package pdftex.def Error: File `assets/identity_loss_A.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.546 ...45\textwidth]{assets/identity_loss_A.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `assets/identity_loss_B.png' not found on input line 553.
+
+
+/Users/thomasfredrich/Documents/HEC/Master3/Q2/DL/decogen/report/report.tex:553: Package pdftex.def Error: File `assets/identity_loss_B.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.553 ...45\textwidth]{assets/identity_loss_B.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(./report.bbl
+
+LaTeX Warning: Reference `LastBibItem' on page 11 undefined on input line 1.
+
+[11]
+Underfull \hbox (badness 4072) in paragraph at lines 60--64
  []\OT1/cmr/m/n/9 Chitwan Sa-haria, William Chan, Hui-wen Chang,
  []
 
-) [11 <./assets/cycle_loss_A.png> <./assets/cycle_loss_B.png>] (./report.aux)
+)
+
+Package natbib Warning: There were undefined citations.
+
+[12] (./report.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: BDCC6A932DAFF6753F2C7DACC3ECA58F;8158.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  45D7C6671C8ABF32F7A97941DC6AF130;8336.
  ) 
 Here is how much of TeX's memory you used:
- 13595 strings out of 474116
- 211471 string characters out of 5743682
- 1950187 words of memory out of 5000000
- 35682 multiletter control sequences out of 15000+600000
- 570329 words of font info for 83 fonts, out of 8000000 for 9000
+ 13687 strings out of 474116
+ 215882 string characters out of 5743682
+ 1949187 words of memory out of 5000000
+ 35774 multiletter control sequences out of 15000+600000
+ 570496 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,977b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on report.pdf (11 pages, 2319960 bytes).
+ 75i,8n,79p,977b,602s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on report.pdf (12 pages, 2305408 bytes).
 PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 358 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 469 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
