@@ -66,8 +66,7 @@ class CycleGAN(nn.Module):
         
         # Learning rate schedulers
         # Generator: Warm restarts with adaptive schedule based on NUM_EPOCHS
-        # T_0 = NUM_EPOCHS // 5 ensures restarts at 20%, 60% and final convergence in last 40%
-        T_0 = max(NUM_EPOCHS // 5, 10)  # Minimum T_0 of 10 for short training runs
+        T_0 = max(NUM_EPOCHS // 10, 10)  # Minimum T_0 of 10 for short training runs
         self.scheduler_G = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
             self.optimizer_G, T_0=T_0, T_mult=2, eta_min=0.00002
         )

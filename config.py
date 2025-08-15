@@ -22,7 +22,7 @@ LEARNING_RATE_D = 0.0001  # Discriminator learning rate (lower)
 BETA1 = 0.5
 BETA2 = 0.999
 NUM_EPOCHS = 500
-LAMBDA_CYCLE = 10.0
+LAMBDA_CYCLE = 5.0
 
 # Discriminator regularization
 DISCRIMINATOR_DROPOUT = 0.2  # Dropout rate for discriminator to prevent overfitting
